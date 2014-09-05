@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B9E7EB5A-18BF-4050-9955-E86218754913}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PIC.Resources</RootNamespace>
+    <AssemblyName>PIC.Resources</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Deploy\SQLs\SetupSqlPersistenceStore.bat" />
+    <None Include="Docs\DataTemplates\供应商数据导入模板.xls" />
+    <None Include="Docs\PIC 系统框架说明.docx" />
+    <None Include="Tools\bats\DecryptWebConfig.bat" />
+    <None Include="Tools\bats\EncryptWebConfig.bat" />
+    <None Include="Tools\Generator\ActiveRecordGenerator.exe.config" />
+    <None Include="Tools\Generator\Templates\PICBizEditPagePage.vm" />
+    <None Include="Tools\Generator\Templates\PICBizListPagePage.vm" />
+    <None Include="Tools\Generator\Templates\PICBizModel_with_IList.vm" />
+    <None Include="Tools\Generator\Templates\PICBizEditPageCodeBehind.vm" />
+    <None Include="Tools\Generator\Templates\PICEditPagePage.vm" />
+    <None Include="Tools\Generator\Templates\PICBizListEditPageCodeBehind.vm.bak" />
+    <None Include="Tools\Generator\Templates\PICBizListEditPagePage.vm.bak" />
+    <None Include="Tools\Generator\Templates\PICBizListPageCodeBehind.vm" />
+    <None Include="Tools\Generator\Templates\PICListPagePage.vm" />
+    <None Include="Tools\Generator\Templates\PICBizModelCustomTemplate.vm" />
+    <None Include="Tools\Generator\Templates\PICBizModel_with_IList.vm_" />
+    <None Include="Tools\Generator\Templates\PICEditPageCodeBehind.vm" />
+    <None Include="Tools\Generator\Templates\PICListEditPageCodeBehind.vm" />
+    <None Include="Tools\Generator\Templates\PICListEditPagePage.vm" />
+    <None Include="Tools\Generator\Templates\PICListPageCodeBehind.vm" />
+    <None Include="Tools\Generator\Templates\PICModelCustomTemplate.vm" />
+    <None Include="Tools\Generator\Templates\PICModel_with_IList.vm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Deploy\SQLs\ClearWorkflowData.sql" />
+    <Content Include="Deploy\SQLs\SqlWorkflowInstanceStoreLogic.sql" />
+    <Content Include="Deploy\SQLs\SqlWorkflowInstanceStoreSchema.sql" />
+    <Content Include="Deploy\SysRegistry.sql" />
+    <Content Include="Deploy\SysRegistryData.xml" />
+    <Content Include="Tools\Dotfuscator\Dotfuscated\Map.xml" />
+    <Content Include="Tools\Dotfuscator\Dotfuscated\PIC.Biz.Model.dll" />
+    <Content Include="Tools\Dotfuscator\Dotfuscated\PIC.Component.dll" />
+    <Content Include="Tools\Dotfuscator\Dotfuscated\PIC.Core.dll" />
+    <Content Include="Tools\Dotfuscator\Dotfuscated\PIC.Portal.dll" />
+    <Content Include="Tools\Dotfuscator\Dotfuscated\PIC.Portal.Services.dll" />
+    <Content Include="Tools\Dotfuscator\Dotfuscated\PIC.Portal.ServicesProvider.dll" />
+    <Content Include="Tools\Dotfuscator\Dotfuscated\PIC.Portal.Web.dll" />
+    <Content Include="Tools\Dotfuscator\Dotfuscated\PIC.Portal.Web.VirtualPathProvider.Ext.dll" />
+    <Content Include="Tools\Dotfuscator\picportal.xml" />
+    <Content Include="Tools\Generator\ActiveRecordGenerator.exe" />
+    <Content Include="Tools\Generator\NVelocity.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Deploy\Flows\cw\" />
+    <Folder Include="Deploy\Flows\jw\" />
+    <Folder Include="Deploy\Flows\jx\" />
+    <Folder Include="Deploy\Flows\rs\" />
+    <Folder Include="Deploy\Flows\sj\" />
+    <Folder Include="Deploy\Flows\xs\" />
+    <Folder Include="Deploy\Flows\zc\" />
+    <Folder Include="Deploy\Flows\zs\" />
+    <Folder Include="Deploy\Flows\zw\" />
+    <Folder Include="Deploy\Flows\_old\" />
+    <Folder Include="References\Database\" />
+    <Folder Include="Tools\Generator\GENERATED\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PIC.Core\PIC.Core.csproj">
+      <Project>{4cb4b35d-4816-44ab-809f-f3cd382f4173}</Project>
+      <Name>PIC.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PIC.Portal\PIC.Portal.csproj">
+      <Project>{d4ce9223-3911-4fdd-9c9c-1cedb6b5abb4}</Project>
+      <Name>PIC.Portal</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activities" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

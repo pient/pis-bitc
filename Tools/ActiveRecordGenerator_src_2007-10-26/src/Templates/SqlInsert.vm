@@ -1,0 +1,47 @@
+##FILENAME:PR_${table.GetClassName()}_Insert.sql
+##
+## Generate a SQL stored procedure to insert a record into the 
+## specified table and return the newly created primary key
+##
+## FUTURE: The generated procedure can support journalling, etc.
+##
+
+#set ($procname = "PR_${table.GetClassName()}_Insert")
+
+#set ($prefix = '')
+#set ($lbrace = '[')
+#set ($rbrace = ']')
+#set ($paramtypes = '')
+#set ($nfields = '')
+#set ($params = '')
+#foreach($f in $fields)
+#if (!$f.IsPrimaryKey())
+#set ($nfields = "$nfields$prefix$lbrace${f.Column_Name}$rbrace")
+#set ($paramtypes = "$paramtypes$prefix@p${f.Column_Name} ${f.GetSqlType()}")
+#set ($params = "$params$prefix@p${f.Column_Name}")
+#set ($prefix = ', ')
+#end
+#end
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[$procname]') AND type in (N'P', N'PC'))
+BEGIN
+	DROP PROCEDURE [dbo].[$procname];
+END;
+
+## we are executing the stored procedure as a string, so double up on any quotes.
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE [dbo].[$procname]
+	($paramtypes)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	INSERT INTO [dbo].$lbrace${table}$rbrace ($nfields)
+		VALUES ($params) ;	
+	SELECT @@IDENTITY AS ID ;
+END;
+'
+GO

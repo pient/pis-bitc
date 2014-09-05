@@ -1,0 +1,158 @@
+﻿<Activity mc:Ignorable="sap" x:Class="PIC.Biz.Model.Reimbursement.Flow.OA_AdminFeeByMonthFlow" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="clr-namespace:Microsoft.VisualBasic;assembly=System" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:ppw="clr-namespace:PIC.Portal.Workflow;assembly=PIC.Portal" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:s1="clr-namespace:System;assembly=System" xmlns:s2="clr-namespace:System;assembly=System.Xml" xmlns:s3="clr-namespace:System;assembly=System.Core" xmlns:sa="clr-namespace:System.Activities;assembly=System.Activities" xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System" xmlns:scg1="clr-namespace:System.Collections.Generic;assembly=System.ServiceModel" xmlns:scg2="clr-namespace:System.Collections.Generic;assembly=System.Core" xmlns:scg3="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sl="clr-namespace:System.Linq;assembly=System.Core" xmlns:st="clr-namespace:System.Text;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="FlowState" Type="InOutArgument(ppw:FlowState)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>882,1306</sap:VirtualizedContainerService.HintSize>
+  <mva:VisualBasic.Settings>Assembly references and imported namespaces for internal implementation</mva:VisualBasic.Settings>
+  <Flowchart sad:XamlDebuggerXmlReader.FileName="D:\Projects\PIC\Projects\STD\Code\STD\Models\PIC.Biz.Model\Reimbursement\Flow\OA_AdminFeeByMonthFlow.xaml" sap:VirtualizedContainerService.HintSize="842,1266">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        <av:Point x:Key="ShapeLocation">340,2.5</av:Point>
+        <av:Size x:Key="ShapeSize">60,75</av:Size>
+        <av:PointCollection x:Key="ConnectorLocation">370,77.5 370,107.5 370,119</av:PointCollection>
+        <x:Double x:Key="Width">828</x:Double>
+        <x:Double x:Key="Height">1229.92</x:Double>
+      </scg3:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID0">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">270,119</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">370,141 370,171 370,172.5</av:PointCollection>
+          </scg3:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ppw:TaskActivity PortalState="{x:Null}" ActionOpString="[ {Code: 'Pass', Text: '提交'}]" ActionTitle="行政专员录入" DisplayName="行政专员" FlowState="[FlowState]" sap:VirtualizedContainerService.HintSize="200,22" TaskCode="AdminSpecialist" />
+        <FlowStep.Next>
+          <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID5" Expression="[FlowState.TaskRequest.RouteCode]" sap:VirtualizedContainerService.HintSize="60,75">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">340,172.5</av:Point>
+                <av:Size x:Key="ShapeSize">60,75</av:Size>
+                <av:PointCollection x:Key="Default">400,191.25 500,191.25 500,130 470,130</av:PointCollection>
+                <av:PointCollection x:Key="AdminConnector">370,247.5 370,379</av:PointCollection>
+                <av:PointCollection x:Key="FunctionalConnector">400,210 560,210 560,239</av:PointCollection>
+              </scg3:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <FlowStep x:Key="Functional" x:Name="__ReferenceID6">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">460,239</av:Point>
+                  <av:Size x:Key="ShapeSize">200,22</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">560,261 560,291 560,292.5</av:PointCollection>
+                </scg3:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ppw:TaskActivity PortalState="{x:Null}" ActionOpString="[{Code: 'Pass', Text: '同意'}, {Code: 'Reject', Text: '打回'}]" ActionTitle="职能经理审批" DisplayName="职能经理" FlowState="[FlowState]" sap:VirtualizedContainerService.HintSize="200,22" TaskCode="FunctionalManager" />
+              <FlowStep.Next>
+                <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID10" Expression="[FlowState.TaskRequest.RouteCode]" sap:VirtualizedContainerService.HintSize="60,75">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                      <av:Point x:Key="ShapeLocation">530,292.5</av:Point>
+                      <av:Size x:Key="ShapeSize">60,75</av:Size>
+                      <av:PointCollection x:Key="PassConnector">530,330 370,330 370,379</av:PointCollection>
+                      <av:PointCollection x:Key="RejectConnector">590,330 676,330 676,130 470,130</av:PointCollection>
+                    </scg3:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <x:Reference>__ReferenceID0<x:Key>Reject</x:Key></x:Reference>
+                  <FlowStep x:Key="Pass" x:Name="__ReferenceID1">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                        <av:Point x:Key="ShapeLocation">270,379</av:Point>
+                        <av:Size x:Key="ShapeSize">200,22</av:Size>
+                        <av:PointCollection x:Key="ConnectorLocation">370,401 370,431 370,492.5</av:PointCollection>
+                      </scg3:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ppw:TaskActivity PortalState="{x:Null}" ActionOpString="[{Code: 'Pass', Text: '同意'}, {Code: 'Reject', Text: '打回'}]" ActionTitle="行政经理审批" DisplayName="行政经理" FlowState="[FlowState]" sap:VirtualizedContainerService.HintSize="200,22" TaskCode="AdminManager" />
+                    <FlowStep.Next>
+                      <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID7" Expression="[FlowState.TaskRequest.RouteCode]" sap:VirtualizedContainerService.HintSize="60,75">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                            <av:Point x:Key="ShapeLocation">340,492.5</av:Point>
+                            <av:Size x:Key="ShapeSize">60,75</av:Size>
+                            <av:PointCollection x:Key="RejectConnector">400,530 719,530 719,130 470,130</av:PointCollection>
+                            <av:PointCollection x:Key="PassConnector">370,567.5 370,649</av:PointCollection>
+                          </scg3:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <FlowStep x:Key="Pass" x:Name="__ReferenceID2">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                              <av:Point x:Key="ShapeLocation">270,649</av:Point>
+                              <av:Size x:Key="ShapeSize">200,22</av:Size>
+                              <av:PointCollection x:Key="ConnectorLocation">370,671 370,701 370,742.5</av:PointCollection>
+                            </scg3:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ppw:TaskActivity PortalState="{x:Null}" ActionOpString="[{Code: 'Pass', Text: '同意'}, {Code: 'Reject', Text: '打回'}]" ActionTitle="董事总经理审批" DisplayName="董事总经理" FlowState="[FlowState]" sap:VirtualizedContainerService.HintSize="200,22" TaskCode="CEO" />
+                          <FlowStep.Next>
+                            <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID8" Expression="[FlowState.TaskRequest.RouteCode]" sap:VirtualizedContainerService.HintSize="60,75">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <av:Point x:Key="ShapeLocation">340,742.5</av:Point>
+                                  <av:Size x:Key="ShapeSize">60,75</av:Size>
+                                  <av:PointCollection x:Key="PassConnector">370,817.5 370,847.5 370,849</av:PointCollection>
+                                  <av:PointCollection x:Key="RejectConnector">340,780 155.5,780 155.5,130 270,130</av:PointCollection>
+                                </scg3:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <FlowStep x:Key="Pass" x:Name="__ReferenceID3">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <av:Point x:Key="ShapeLocation">270,849</av:Point>
+                                    <av:Size x:Key="ShapeSize">200,22</av:Size>
+                                    <av:PointCollection x:Key="ConnectorLocation">370,871 370,901 370,922.5</av:PointCollection>
+                                  </scg3:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ppw:TaskActivity PortalState="{x:Null}" ActionOpString="[{Code: 'Pass', Text: '同意'}, {Code: 'Reject', Text: '打回'}]" ActionTitle="财务主管审批" DisplayName="财务主管" FlowState="[FlowState]" sap:VirtualizedContainerService.HintSize="200,22" TaskCode="FinanceSupervisor" />
+                                <FlowStep.Next>
+                                  <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID9" Expression="[FlowState.TaskRequest.RouteCode]" sap:VirtualizedContainerService.HintSize="60,75">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <av:Point x:Key="ShapeLocation">340,922.5</av:Point>
+                                        <av:Size x:Key="ShapeSize">60,75</av:Size>
+                                        <av:PointCollection x:Key="PassConnector">370,997.5 370,1069</av:PointCollection>
+                                        <av:PointCollection x:Key="RejectConnector">340,960 61.5,960 61.5,130 270,130</av:PointCollection>
+                                      </scg3:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <FlowStep x:Key="Pass" x:Name="__ReferenceID4">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <av:Point x:Key="ShapeLocation">270,1069</av:Point>
+                                          <av:Size x:Key="ShapeSize">200,22</av:Size>
+                                          <av:PointCollection x:Key="ConnectorLocation">370,1091 370,1121 370,1149</av:PointCollection>
+                                        </scg3:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ppw:TaskActivity PortalState="{x:Null}" ActionOpString="[{Code: 'Pass', Text: '财务报销'}]" ActionTitle="财务记账" DisplayName="财务记账" FlowState="[FlowState]" sap:VirtualizedContainerService.HintSize="200,22" TaskCode="Accountant" />
+                                    </FlowStep>
+                                    <x:Reference>__ReferenceID0<x:Key>Reject</x:Key></x:Reference>
+                                  </FlowSwitch>
+                                </FlowStep.Next>
+                              </FlowStep>
+                              <x:Reference>__ReferenceID0<x:Key>Reject</x:Key></x:Reference>
+                            </FlowSwitch>
+                          </FlowStep.Next>
+                        </FlowStep>
+                        <x:Reference>__ReferenceID0<x:Key>Reject</x:Key></x:Reference>
+                      </FlowSwitch>
+                    </FlowStep.Next>
+                  </FlowStep>
+                </FlowSwitch>
+              </FlowStep.Next>
+            </FlowStep>
+            <x:Reference>__ReferenceID1<x:Key>Admin</x:Key></x:Reference>
+          </FlowSwitch>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID6</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
+    <x:Reference>__ReferenceID8</x:Reference>
+    <x:Reference>__ReferenceID9</x:Reference>
+    <x:Reference>__ReferenceID10</x:Reference>
+  </Flowchart>
+</Activity>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="328e4898-ef73-4c0d-af38-dff16ba54277" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:37526/BpmService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BpmService.xsd" MetadataType="Schema" ID="b839d918-2187-47e7-a046-6f0013df8f1a" SourceId="1" SourceUrl="http://localhost:37526/BpmService.svc?xsd=xsd1" />
+    <MetadataFile FileName="BpmService1.xsd" MetadataType="Schema" ID="b248ea9d-565c-4a85-8154-2846ebabd269" SourceId="1" SourceUrl="http://localhost:37526/BpmService.svc?xsd=xsd0" />
+    <MetadataFile FileName="BpmService.disco" MetadataType="Disco" ID="0c4fc145-676e-42a0-80d3-61eaf6f392fd" SourceId="1" SourceUrl="http://localhost:37526/BpmService.svc?disco" />
+    <MetadataFile FileName="BpmService.wsdl" MetadataType="Wsdl" ID="f185ac9a-1843-4856-a612-80bea69dbae2" SourceId="1" SourceUrl="http://localhost:37526/BpmService.svc?wsdl" />
+    <MetadataFile FileName="BpmService2.xsd" MetadataType="Schema" ID="c1eb9cf9-2037-4882-9027-2651771651b9" SourceId="1" SourceUrl="http://localhost:37526/BpmService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

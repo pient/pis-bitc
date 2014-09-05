@@ -1,0 +1,13 @@
+﻿{
+	"results": [{
+		"profile_image_url" : "/mobile/Images/car1.jpg",
+		"from_user" : "08款凯迪拉克CTS",
+		"to_user" : "to_user",
+		"text":"08款凯迪拉克CTS将在下个月上市，这将成为一月份全新凯迪拉克SRX上市之后，上海通用今年推出的第二款凯迪拉克车型。"
+	}, {
+		"profile_image_url" : "/mobile/Images/car2.jpg",
+		"from_user" : "凯迪拉克XTS 28T 精英型 2013款",
+		"to_user" : "to_user",
+		"text":"级别：中大型车； 所属品牌：凯迪拉克； 车  型：4门三厢排量：2.0L； 上市时间：2013年2月25日； 变速器：6档手自一体"
+	}]
+}

@@ -1,0 +1,130 @@
+##FILENAME:${table.GetClassName()}GridSupport.cs
+##
+## ActiveRecord DataGridView support code
+## Allows a DataGridView to be bound to an array of ActiveRecord objects
+##
+##TODO: use $namespace
+namespace HCAHPS_Manager.UI.Grid
+{
+	using System;
+	using System.Collections.Generic;
+	using System.Text;
+	using System.Windows.Forms;
+
+	using Castle.ActiveRecord;
+	using NHibernate.Criterion;
+
+	using HCAHPS_Lib.Model;
+
+	internal class ${table.GetClassName()}GridSupport : BaseGridSupport, IGridSupport<ActiveRecordBase>
+	{
+		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(${table.GetClassName()}));
+
+		#region IGridSupport<ActiveRecordBase> Members
+		
+		private string _name = null;
+
+		public override string ToString()
+		{ 
+			if (_name == null)
+			{
+				_name = MakeHeader("${table.GetClassName()}");
+			}
+			return _name;
+		}
+
+		public  ActiveRecordBase[] FindAll(ICriterion[] criterion)
+		{
+			return  ${table.GetClassName()}.FindAll(criterion);
+		}
+
+		public void PrepareGrid(System.Windows.Forms.DataGridView grid)
+		{
+			grid.Columns.Clear();
+			grid.Columns.AddRange(CreateColumnArray());
+		}
+
+		//make a column for all except primary key 
+		private DataGridViewColumn[] CreateColumnArray()
+		{
+			List<DataGridViewColumn> list = new List<DataGridViewColumn>();
+			DataGridViewColumn dgvc;
+#foreach($f in $fields)
+
+#if (!$f.IsPrimaryKey())
+			dgvc = new DataGridViewTextBoxColumn();
+			dgvc.DataPropertyName =  ${table.GetClassName()}.Prop_${f.GetPropertyName()};
+			dgvc.HeaderText = MakeHeader( ${table.GetClassName()}.Prop_${f.GetPropertyName()});
+			dgvc.Width = 100;
+			list.Add(dgvc);
+#end
+#end			
+
+			return list.ToArray();
+		}
+
+#if (false)
+		/// <summary>
+		/// MakeHeader - given a string, insert spaces on transition from lower case to upper case characters and replace punctuation with space
+		/// </summary>
+		/// <param name="pPropName"></param>
+		/// <returns></returns>
+		///TODO: make private after testing 
+		internal string MakeHeader(string pPropName)
+		{
+			List<char> header = new List<char>();
+			header.AddRange(pPropName.ToCharArray());
+			bool lastWasLower = false;
+			for (int i = 0; i < header.Count; i++)
+			{
+				if (Char.IsPunctuation(header[i]))
+				{
+					//replace punctuation with space
+					header[i] = ' ';
+					lastWasLower = false;
+				}
+				else if (Char.IsLower(header[i]))
+				{
+					lastWasLower = true;
+				}
+				else if (lastWasLower && Char.IsUpper(header[i]))
+				{
+					// insert spaces between lower and upper characters
+					header.Insert(i, ' ');
+					lastWasLower = false;
+				}
+			}
+			// replace multiple spaces with one space
+			bool lastWasSpace = true;
+			for (int i = header.Count - 1; i >= 0; i--)
+			{
+				if (Char.IsWhiteSpace(header[i]))
+				{
+					if (lastWasSpace)
+					{
+						header.RemoveAt(i);
+					}
+					lastWasSpace = true;
+				}
+				else 
+				{
+					lastWasSpace = false;
+				}
+			}
+			return new String(header.ToArray());
+		}
+#end
+		public  ActiveRecordBase Create(System.Windows.Forms.Form parent)
+		{
+			return new  ${table.GetClassName()}();
+		}
+
+		public void Delete(System.Windows.Forms.Form parent, ActiveRecordBase item)
+		{
+			//TODO: prompt to confirm delete
+			item.Delete();
+		}
+
+		#endregion
+	}
+}

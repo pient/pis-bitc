@@ -1,0 +1,81 @@
+##FILENAME:${table.GetClassName()}_biz.cs
+##
+## Generate a business class (typically NOT regenerated each time a
+## schema change occurs)
+##
+## The generated class will be TableName_Biz.cs containing a partial class
+## with ToString() support, such that an array of model objects could
+## be data bound to a combo box, etc.
+##
+## Note: Two un-saved entities of same type will be considered equal, as they
+## will have the same Primary Key value - ZERO!
+##
+namespace $namespace
+{
+	// Business partial class ${table.GetClassName()} generated from ${table}
+	// $developer [$date] Created
+
+	using System;
+	using NHibernate.Criterion;
+
+	public $Partial class ${table.GetClassName()}
+	{
+		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(${table.GetClassName()}));
+
+		#region Finder_Methods
+
+		/*
+#foreach($r in $related)
+		public ${r.GetClassName()}[] find${r.Table_Name} ()
+		{
+			return ${r.GetClassName()}.FindAll(Expression.Eq(${r.GetClassName()}.Prop_${r.Column_Name}, _${table.GetPKField().Column_Name}));
+		}
+		*/
+		
+#end			
+		
+		#endregion
+		
+		#region Business_Methods
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
+		}
+
+		public override bool Equals(object obj)
+		{
+			${table.GetClassName()} value = obj as ${table.GetClassName()};
+			if (value == null) return false;
+#set ($s = '')
+#foreach($f in $fields)
+#if ($f.IsPrimaryKey())
+#set ($s = "$s${f.GetPrivateVariableName()} == value.${f.GetPrivateVariableName()}")
+#set ($prefix = ' && ')
+#end
+#end			
+			return $s;
+		}
+				
+		public override string ToString()
+		{
+			//TODO: Choose an appropriate string representation
+#set ($prefix = '')
+#set ($lbrace = '"[" + ')
+#set ($rbrace = ' + "]"')
+#set ($s = '')
+#foreach($f in $fields)
+#if (!$f.IsPrimaryKey())
+#if (!$f.IsForeignKey())
+#set ($s = "$s$prefix$lbrace${f.GetPropertyName()}$rbrace")
+#set ($prefix = ' + ')
+#end
+#end
+#end
+			return $s ;
+		}
+		
+		#endregion
+		
+	} // ${table.GetClassName()}
+}

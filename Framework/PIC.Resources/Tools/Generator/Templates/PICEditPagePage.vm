@@ -1,0 +1,110 @@
+##FILENAME:${table.GetClassName()}Edit.aspx
+##
+## Castle ActiveRecord EditPage
+##
+
+<%@ Page Title="${title}" Language="C#" AutoEventWireup="true" CodeBehind="${table.GetClassName()}Edit.aspx.cs" Inherits="${namespace}.Web.${table.GetClassName()}Edit" %>
+
+<asp:Content ID="HeadContent" ContentPlaceHolderID="HeadHolder" runat="server">
+
+    <script type="text/javascript">
+        
+        function onPgLoad() {
+            setPgUI();
+        }
+
+        function setPgUI() {
+            if (pgOperation == "c" || pgOperation == "cs") {
+                $("#CreatorName").val(PICState.UserInfo.Name);
+                $("#CreatedDate").val(jQuery.dateOnly(PICState.SystemInfo.Date));
+            }
+
+            // 页面视图
+            viewport = new Ext.ux.PICFrmViewport({
+                title: "${title}",
+                tbar: {
+                    xtype: 'picfrmtoolbar',
+                    items: [{
+                        xtype: 'picsavebutton',
+                        id: 'btnSubmit'
+                    }, '-', 'cancel', '->', '-', 'help']
+                }
+            });
+            
+            //绑定按钮验证
+            FormValidationBind('btnSubmit', SuccessSubmit);
+        }
+
+        //验证成功执行保存方法
+        function SuccessSubmit() {
+            PICFrm.submit(pgAction, {}, null, SubFinish);
+        }
+
+        function SubFinish(args) {
+            RefreshClose();
+        }
+    </script>
+
+</asp:Content>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="BodyHolder" runat="server">    
+    <div id="editDiv" align="center">
+        <table class="pic-ui-table-edit">
+            <tbody>
+                <tr style="display: none">
+                    <td>
+                        <input id="${table.GetPkField().GetPropertyName()}" name="${table.GetPkField().GetPropertyName()}" />
+                    </td>
+                </tr>
+#set ($i = 0)
+#foreach ($f in $fields)
+#if (!${f.IsPrimaryKey()})
+#if ($i%2==0)
+                <tr>
+#end
+                    <td class="pic-ui-td-caption">
+#if(${f.GetPropertyName()}=="Code")
+                        编号
+#elseif(${f.GetPropertyName()}=="Name")
+                        名称
+#elseif(${f.GetPropertyName()}=="Type")
+                        类型
+#else
+                        ${f.GetPropertyName()}
+#end
+                    </td>
+                    <td class="pic-ui-td-data">
+#set ($extstr = "")
+#if(${f.GetSqlType()}=="datetime" || ${f.GetSqlType()}=="smalldatetime" || ${f.GetSqlType()}=="date")
+#set ($extstr = "$extstr picctrl='date'")
+#end
+#if(!${f.Is_Nullable})
+#if(${f.GetSqlType()}=="bigint" || ${f.GetSqlType()}=="int" || ${f.GetSqlType()}=="smallint" || ${f.GetSqlType()}=="tinyint")
+#set ($extstr = "$extstr required=true picctrl='integer'")
+#elseif(${f.GetSqlType()}=="float" || ${f.GetSqlType()}=="decimal" || ${f.GetSqlType()}=="numeric" || ${f.GetSqlType()}=="money" || ${f.GetSqlType()}=="smallmoney")
+#set ($extstr = "$extstr required=true picctrl='decimal'")
+#else
+#set ($extstr = "$extstr class='validate[required]'")
+#end
+#else
+#if(${f.GetSqlType()}=="bigint" || ${f.GetSqlType()}=="int" || ${f.GetSqlType()}=="smallint" || ${f.GetSqlType()}=="tinyint")
+#set ($extstr = "$extstr picctrl='integer'")
+#elseif(${f.GetSqlType()}=="float" || ${f.GetSqlType()}=="decimal" || ${f.GetSqlType()}=="numeric" || ${f.GetSqlType()}=="money" || ${f.GetSqlType()}=="smallmoney")
+#set ($extstr = "$extstr picctrl='decimal'")
+#end
+#end
+                        <input id="${f.GetPropertyName()}" name="${f.GetPropertyName()}" $extstr />
+                    </td>
+#if ($i%2!=0)
+                </tr>
+#end
+#set($i = $i + 1)
+#end
+#end
+            </tbody>
+        </table>
+    </div>
+    <div id="descDiv" class="pic-ui-form-desc">
+        表单描述：${title}
+    </div>
+</asp:Content>
+

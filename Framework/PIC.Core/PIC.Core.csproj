@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4CB4B35D-4816-44AB-809F-F3CD382F4173}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PIC.Core</RootNamespace>
+    <AssemblyName>PIC.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Bin\release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.ActiveRecord, Version=2.1.2.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\libs2\Castle.ActiveRecord.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\libs2\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\libs2\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus, Version=2.5.0.1446, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\libs2\NServiceBus.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\libs2\PostSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Authentication\AuthPackage.cs" />
+    <Compile Include="Authentication\AuthTypeEnum.cs" />
+    <Compile Include="Configuration\LogConfiguration.cs" />
+    <Compile Include="Core\App\ValidationResult.cs" />
+    <Compile Include="Core\App\OperationRequest.cs" />
+    <Compile Include="Core\App\MinFileInfo.cs" />
+    <Compile Include="Core\App\MinUserInfo.cs" />
+    <Compile Include="Authentication\SysIdentity.cs" />
+    <Compile Include="Authentication\SysPrincipal.cs" />
+    <Compile Include="Authentication\UserInfo.cs" />
+    <Compile Include="Authentication\UserInfoData.cs" />
+    <Compile Include="Cache\Cache.cs" />
+    <Compile Include="Cache\CacheEvent.cs" />
+    <Compile Include="Cache\CacheException.cs" />
+    <Compile Include="Cache\DefaultCacheProvider.cs" />
+    <Compile Include="Configuration\CacheConfiguration.cs" />
+    <Compile Include="Configuration\ConfigurationHandler.cs" />
+    <Compile Include="Configuration\ConfigurationManager.cs" />
+    <Compile Include="Configuration\ExceptionConfiguration.cs" />
+    <Compile Include="Configuration\PICConfigurationManager.cs" />
+    <Compile Include="Configuration\ServiceConfiguration.cs" />
+    <Compile Include="Configuration\SystemConfiguration.cs" />
+    <Compile Include="Configuration\ThirdPartyConfiguration.cs" />
+    <Compile Include="Core\App\OperationResult.cs" />
+    <Compile Include="Core\Objects\EasyCollection.cs" />
+    <Compile Include="Data\Comparers\EntityComparer.cs" />
+    <Compile Include="Pattern\UnitOfWork\IEntityContext.cs" />
+    <Compile Include="Pattern\UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="Pattern\UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="Utilities\Comparers\PropertyEqualityComparer.cs" />
+    <Compile Include="Utilities\SecurityHelper.cs" />
+    <Compile Include="Utilities\ServiceHelper.cs" />
+    <Compile Include="Utilities\WebHelper.cs" />
+    <Compile Include="Service\AuthMessage.cs" />
+    <Compile Include="Service\IWCFService.cs" />
+    <Compile Include="Service\OpMessage.cs" />
+    <Compile Include="Core\Aop\ExceptionAttribute.cs" />
+    <Compile Include="Core\Aop\LogAttribute.cs" />
+    <Compile Include="Core\Aop\Permission.cs" />
+    <Compile Include="Core\Code\CodeGeneratorBase.cs" />
+    <Compile Include="Core\Code\SelfIncreaseGenerator.cs" />
+    <Compile Include="Core\ContantValue.cs" />
+    <Compile Include="Core\Message\ServiceBus.cs" />
+    <Compile Include="Core\Message\SvcMessage.cs" />
+    <Compile Include="Core\Objects\BaseAttribute.cs" />
+    <Compile Include="Core\Objects\EasyDictionary.cs" />
+    <Compile Include="Core\Objects\KeyValuePairList.cs" />
+    <Compile Include="Core\Objects\MessageException.cs" />
+    <Compile Include="Core\Objects\PropertyChangedEventArgs.cs" />
+    <Compile Include="Core\Objects\ReadOnlyDictionary.cs" />
+    <Compile Include="Core\Objects\Tree.cs" />
+    <Compile Include="Core\Security\Encrypts.cs" />
+    <Compile Include="Core\SQLHelper.cs" />
+    <Compile Include="Utilities\Extensiones\CLRExtensions.cs" />
+    <Compile Include="Utilities\Extensiones\DateExtensions.cs" />
+    <Compile Include="Utilities\Extensiones\EnumerableExtensions.cs" />
+    <Compile Include="Utilities\Extensiones\StringExtensions.cs" />
+    <Compile Include="Utilities\Extensiones\XmlEntensions.cs" />
+    <Compile Include="Utilities\JsonHelper.cs" />
+    <Compile Include="Utilities\CLRHelper.cs" />
+    <Compile Include="Utilities\StringHelper.cs" />
+    <Compile Include="Utilities\SystemHelper.cs" />
+    <Compile Include="Data\Fluent\ModelMap.cs" />
+    <Compile Include="Data\Json\JsonGuidConverter.cs" />
+    <Compile Include="Data\Models\IEntity.cs" />
+    <Compile Include="Data\PICIdentifierGenerator.cs" />
+    <Compile Include="Data\Attributes\ActiveRecordTransactionAttribute.cs" />
+    <Compile Include="Data\DataEnum.cs" />
+    <Compile Include="Data\EditSensitiveEntityBase.cs" />
+    <Compile Include="Data\EditSensitiveRuleBase.cs" />
+    <Compile Include="Data\EditSensitiveTreeNodeEntityBase.cs" />
+    <Compile Include="Data\EntityBase.cs" />
+    <Compile Include="Data\EntityManager.cs" />
+    <Compile Include="Data\Enumerations\OperationEnum.cs" />
+    <Compile Include="Data\Exceptions\RepeatedKeyException.cs" />
+    <Compile Include="Data\ExecutableEntityBase.cs" />
+    <Compile Include="Data\ExecutableRuleBase.cs" />
+    <Compile Include="Data\FullTextSearchCriterion.cs" />
+    <Compile Include="Data\HqlKeyValueResultTransformer.cs" />
+    <Compile Include="Data\HqlSearchCriterion.cs" />
+    <Compile Include="Data\Models\IEditSensitiveEntity.cs" />
+    <Compile Include="Data\Models\IExecutableEntity.cs" />
+    <Compile Include="Data\Models\ITreeNodeEntity.cs" />
+    <Compile Include="Data\Objects\DataCollection.cs" />
+    <Compile Include="Data\Objects\DataContainer.cs" />
+    <Compile Include="Data\Objects\DataElement.cs" />
+    <Compile Include="Data\Objects\DataMessage.cs" />
+    <Compile Include="Data\Objects\DataNode.cs" />
+    <Compile Include="Data\Objects\DataParameter.cs" />
+    <Compile Include="Data\RuleBase.cs" />
+    <Compile Include="Data\SearchCriterion.cs" />
+    <Compile Include="Data\TreeNodeEntityBase.cs" />
+    <Compile Include="Data\TreeNodeEntityBaseV1.cs" />
+    <Compile Include="Data\Utilities\DataHelper.cs" />
+    <Compile Include="Data\Utilities\EditSensitiveEntityHelper.cs" />
+    <Compile Include="Data\Utilities\ExecutableEntityHelper.cs" />
+    <Compile Include="Data\Utilities\NHSessionService.cs" />
+    <Compile Include="Data\Utilities\QueryBuilder.cs" />
+    <Compile Include="Data\Utilities\SearchHelper.cs" />
+    <Compile Include="Data\XQuery\IXQueryProvider.cs" />
+    <Compile Include="Data\XQuery\SqlXQueryProvider.cs" />
+    <Compile Include="Data\XQuery\XQueryObject.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Testing\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

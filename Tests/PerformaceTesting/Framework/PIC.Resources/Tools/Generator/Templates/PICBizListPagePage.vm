@@ -1,0 +1,110 @@
+##FILENAME:${table.GetClassName()}List.aspx
+##
+## Castle ActiveRecord ListPage
+##
+
+<%@ Page Title="${title}" Language="C#" AutoEventWireup="true" CodeBehind="${table.GetClassName()}List.aspx.cs" Inherits="${namespace}.Web.${table.GetClassName()}List" %>
+
+<asp:Content ID="HeadContent" ContentPlaceHolderID="HeadHolder" runat="server">
+
+<script type="text/javascript">
+    var EditWinStyle = CenterWin("width=650,height=600,scrollbars=yes");
+    var EditPageUrl = "${table.GetClassName()}Edit.aspx";
+    
+    var store, grid, viewport;
+
+    function onPgLoad() {
+        setPgUI();
+    }
+
+    function setPgUI() {
+
+        // 表格数据源
+        store = new Ext.ux.PICGridStore({
+            dsname: '${table.GetClassName()}List',
+            idProperty: '${table.GetPKField().Column_Name}',
+            fields: [
+#set ($i = 0)
+#foreach ($f in $fields)
+#set ($i = $i+1)
+#if($i==$fields.length)
+			{ name: '${f.GetPropertyName()}' }
+#else
+			{ name: '${f.GetPropertyName()}' },
+#end
+#end
+			]
+        });
+
+        grid = new Ext.ux.grid.PICGridPanel({
+            id: 'grid',
+            store: store,
+            region: 'center',
+            title: '${title}',
+            editpageurl: EditPageUrl,
+            editwinstyle: EditWinStyle,
+            tlitems: ['add', 'edit', 'delete', '-', 'excel', '->', 'schfield', '-', 'cquery', '-', 'help'],
+            schitems: [
+                { fieldLabel: '名称', id: 'Name', schopts: { qryopts: "{ mode: 'Like', field: 'Name' }"} },
+                { fieldLabel: '编号', id: 'Code', schopts: { qryopts: "{ mode: 'Like', field: 'Code' }"} }
+            ],
+            columns: [
+                    { id: '${table.GetPKField().Column_Name}', dataIndex: '${table.GetPKField().Column_Name}', header: '标识', hidden: true },
+                    new Ext.ux.grid.PICRowNumberer(),
+                    new Ext.ux.grid.PICCheckboxSelectionModel(),
+#set ($i = 0)
+#foreach ($f in $fields)
+#set ($i = $i+1)
+#if (!${f.IsPrimaryKey()})
+#set ($header = "")
+#if(${f.GetPropertyName()}=="Code")
+#set ($header = "编号")
+#elseif(${f.GetPropertyName()}=="Name")
+#set ($header = "名称")
+#elseif(${f.GetPropertyName()}=="Type")
+#set ($header = "类型")
+#elseif(${f.GetPropertyName()}=="Status")
+#set ($header = "状态")
+#elseif(${f.GetPropertyName()}=="Description")
+#set ($header = "描述")
+#else
+#set ($header = ${f.GetPropertyName()})
+#end
+##
+##
+#if(${f.GetPropertyName()}=="Name" || ${f.GetPropertyName()}=="Title")
+#if($i==$fields.length)
+					{ id: '${f.GetPropertyName()}', dataIndex: '${f.GetPropertyName()}', header: '$header', juncqry: true, linkparams: { url: EditPageUrl, style: EditWinStyle }, width: 100, sortable: true }
+#else
+					{ id: '${f.GetPropertyName()}', dataIndex: '${f.GetPropertyName()}', header: '$header', juncqry: true, linkparams: { url: EditPageUrl, style: EditWinStyle }, width: 100, sortable: true },
+#end
+#else
+#if($i==$fields.length)
+					{ id: '${f.GetPropertyName()}', dataIndex: '${f.GetPropertyName()}', header: '$header', juncqry: true, width: 100, sortable: true }
+#else
+					{ id: '${f.GetPropertyName()}', dataIndex: '${f.GetPropertyName()}', header: '$header', juncqry: true, width: 100, sortable: true },
+#end
+#end
+#end
+#end
+                    ],
+#set ($autoExpandColumn = "Name")
+#if(${table.HasProperty("Description")})
+			#set ($autoExpandColumn = "Name")
+#end
+            autoExpandColumn: '$autoExpandColumn'
+        });
+
+        // 页面视图
+        viewport = new Ext.ux.PICGridViewport({
+            items: [{ xtype: 'box', region: 'north', applyTo: 'pic-page-header', height: 30 }, grid]
+        });
+    }
+    
+    </script>
+
+</asp:Content>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="BodyHolder" runat="server">
+    <div id="pic-page-header" class="pic-page-header" style="display:none;"><h1>${title}</h1></div>
+</asp:Content>
+

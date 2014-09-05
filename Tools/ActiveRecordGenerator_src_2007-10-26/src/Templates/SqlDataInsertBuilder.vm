@@ -1,0 +1,37 @@
+##FILENAME:${table.GetClassName()}_data_insert_builder.sql
+##
+## This template will build a select statement that can be run on a table to
+## create insert statements that can be used to script data creation on another
+## database.
+##
+
+#set ($prefix = '')
+#set ($tprefix = '')
+#set ($lbrace = '[')
+#set ($rbrace = ']')
+#set ($paramtypes = '')
+#set ($nfields = '')
+#set ($params = '')
+#foreach($f in $fields)
+#if (!$f.IsPrimaryKey())
+#set ($nfields = "$nfields$prefix${f.Column_Name}")
+#set ($paramtypes = "${paramtypes}${prefix}${f.Column_Name} ${f.GetSqlType()} NULL")
+#set ($params = "${params}${tprefix}ISNULL('''' + REPLACE(${f.Column_Name},'''','''''') + '''','NULL')")
+#set ($prefix = ', ')
+#set ($tprefix = " + ', ' + ")
+#end
+#end
+-- Run this query on a database, and save the results to a text file and run it on another
+-- database to insert the data into a temp table where it can be inserted in a unique-only
+-- fashion.
+SELECT 'CREATE TABLE #temp ([ID] INT IDENTITY(1,1) PRIMARY KEY NOT NULL, $paramtypes) ;' AS Line
+UNION ALL
+SELECT 'INSERT INTO #temp ($nfields) VALUES(' + $params + ');' AS Line FROM $table ;
+
+/*
+-- replace TheTable with target table name and execute on target system
+INSERT INTO [TheTable] ($nfields) SELECT $nfields FROM #TEMP ;
+
+DROP TABLE #TEMP ;
+*/
+

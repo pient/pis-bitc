@@ -1,0 +1,133 @@
+##FILENAME:${table.GetClassName()}.cs
+##
+## Castle ActiveRecord ListPage
+##
+using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.Serialization;
+using NHibernate;
+using NHibernate.Criterion;
+using NHibernate.Transform;
+using Newtonsoft.Json;
+using Castle.ActiveRecord;
+using Castle.ActiveRecord.Queries;
+using Aim.Data;
+	
+namespace Aim.Portal.Entity
+{
+    /// <summary>
+    /// 自定义实体类
+    /// </summary>
+    [Serializable]
+	public partial class ${table.GetClassName()}
+    {
+        #region 成员变量
+
+        #endregion
+
+        #region 成员属性
+        
+        #endregion
+
+        #region 公共方法
+
+        /// <summary>
+        /// 验证操作
+        /// </summary>
+        public void DoValidate()
+        {
+            // 检查是否存在重复键
+            /*if (!this.IsPropertyUnique("UniqueKey"))
+            {
+                throw new RepeatedKeyException("存在重复的 UniqueKey “" + this.UniqueKey + "”");
+            }*/
+        }
+
+        /// <summary>
+        /// 保存
+        /// </summary>
+        public void DoSave()
+        {
+            if (String.IsNullOrEmpty(${table.GetPKField().Column_Name}))
+            {
+                this.DoCreate();
+            }
+            else
+            {
+                this.DoUpdate();
+            }
+        }
+
+        /// <summary>
+        /// 创建操作
+        /// </summary>
+        public void DoCreate()
+        {
+            this.DoValidate();
+            
+#if(${table.HasProperty("CreateDate")})
+            this.CreateDate = DateTime.Now;
+#end
+#if(${table.HasProperty("CreatedDate")})
+            this.CreatedDate = DateTime.Now;
+#end
+#if(${table.HasProperty("CreateTime")})
+            this.CreateTime = DateTime.Now;
+#end
+
+            // 事务开始
+            this.CreateAndFlush();
+        }
+
+        /// <summary>
+        /// 修改操作
+        /// </summary>
+        /// <returns></returns>
+        public void DoUpdate()
+        {
+            this.DoValidate();
+                        
+#if(${table.HasProperty("LastModifiedDate")})
+            this.LastModifiedDate = DateTime.Now;
+#end
+#if(${table.HasProperty("ModifyTime")})
+            this.ModifyTime = DateTime.Now;
+#end
+
+            this.UpdateAndFlush();
+        }
+
+        /// <summary>
+        /// 删除操作
+        /// </summary>
+        public void DoDelete()
+        {
+            this.Delete();
+        }
+
+        #endregion
+        
+        #region 静态成员
+        
+        /// <summary>
+        /// 批量删除操作
+        /// </summary>
+        public static void DoBatchDelete(params object[] args)
+        {
+			${table.GetClassName()}[] tents = ${table.GetClassName()}.FindAll(Expression.In("${table.GetPKField().Column_Name}", args));
+
+			foreach (${table.GetClassName()} tent in tents)
+			{
+				tent.DoDelete();
+			}
+        }
+        
+        #endregion
+
+    } // ${table.GetClassName()}
+}
+

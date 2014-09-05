@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D4CE9223-3911-4FDD-9C9C-1CEDB6B5ABB4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PIC.Portal</RootNamespace>
+    <AssemblyName>PIC.Portal</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Bin\release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=4.7.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\libs2\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Email">
+      <HintPath>..\..\Bin\libs2\Aspose.Email.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Imaging">
+      <HintPath>..\..\Bin\libs2\Aspose.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Words">
+      <HintPath>..\..\Bin\libs2\Aspose.Words.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.ActiveRecord">
+      <HintPath>..\..\Bin\libs2\Castle.ActiveRecord.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\libs2\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Synchronization.MetadataStorage, Version=1.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Windows.Design.Extensibility, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\libs2\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\Bin\libs2\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus, Version=2.5.0.1446, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\libs2\NServiceBus.dll</HintPath>
+    </Reference>
+    <Reference Include="NVelocity, Version=1.1.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\SharedLibs\Projects\Castle\CastleNVelocity-1.1.1\net40\NVelocity.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\libs2\PostSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Quartz, Version=1.0.3.3, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\libs2\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Activities.DurableInstancing" />
+    <Reference Include="System.Activities.Presentation" />
+    <Reference Include="System.ComponentModel.Composition, Version=2010.2.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PIC.Resources\libs\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.DurableInstancing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activities" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Interfaces\Providers\IBpmServiceProvider.cs" />
+    <Compile Include="Model\Dev\Template.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\Dev\Template.g.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\Dev\TemplateCatalog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\Dev\TemplateCatalog.g.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Log\LogManager.cs" />
+    <Compile Include="Services\TaskScheduler\Action\CommonTaskAction.cs" />
+    <Compile Include="Services\TaskScheduler\Action\SysInnerTaskAction.cs" />
+    <Compile Include="Services\Template\Configs\CodeTemplateConfig.cs" />
+    <Compile Include="Services\Template\Configs\SNTemplateConfig.cs" />
+    <Compile Include="Services\Template\Configs\StandardTemplateConfig.cs" />
+    <Compile Include="Services\Template\Configs\DataTemplateConfig.cs" />
+    <Compile Include="Services\Template\Objects\TemplateBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Template\Configs\TemplateConfig.cs" />
+    <Compile Include="Services\Template\Objects\TmplContext.cs" />
+    <Compile Include="Services\Workflow\Activity\FileActivity.cs" />
+    <Compile Include="Services\Workflow\WfServer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Workflow\WfService.cs" />
+    <Compile Include="Services\Workflow\WfServiceConfig.cs" />
+    <Compile Include="Utilities\DrawingHelper.cs" />
+    <Compile Include="Utilities\ICEClientHelper.cs" />
+    <Compile Include="Utilities\MailHelper.cs" />
+    <Compile Include="Utilities\WinImageRender.cs" />
+    <Compile Include="Web\Services\BpmService\BpmService.cs" />
+    <Compile Include="Web\Services\BpmService\IBpmService.cs" />
+    <Compile Include="Web\Services\DataService\IDataService.cs" />
+    <Compile Include="Web\Services\IServiceBase.cs" />
+    <Compile Include="Web\Services\SchedulerService\IScheduleService.cs" />
+    <Compile Include="Web\Services\SchedulerService\ScheduleService.cs" />
+    <Compile Include="Web\Services\UserSessionService\IUserSessionService.cs" />
+    <Compile Include="Model\Doc\FileModel.cs" />
+    <Compile Include="Model\Doc\FileModelGroup.cs" />
+    <Compile Include="Model\Org\OrgUserConfig.cs" />
+    <Compile Include="Model\Org\OrgUserConfig.g.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Model\Org\OrgUserConfigInfo.cs" />
+    <Compile Include="Model\Wf\FlowFormData.cs" />
+    <Compile Include="Model\Wf\FlowActionInfo.cs" />
+    <Compile Include="Model\Wf\FlowBasicInfo.cs" />
+    <Compile Include="Model\Wf\WfDefineConfig.cs" />
+    <Compile Include="Services\Doc\Providers\DbDocModuleProvider.cs" />
+    <Compile Include="Services\Doc\Providers\OSDocModuleProvider.cs" />
+    <Compile Include="Services\Doc\DocDataHelper.cs" />
+    <Compile Include="Services\Doc\DocModelBase.cs" />
+    <Compile Include="Services\Doc\DocService.cs" />
+    <Compile Include="Services\Doc\DocTreeNodeModelBase.cs" />
+    <Compile Include="Services\Doc\Interfaces\IDocModuleProvider.cs" />
+    <Compile Include="Services\Doc\Model\DocConfig.cs" />
+    <Compile Include="Services\Doc\Model\DocConfig.g.cs" />
+    <Compile Include="Services\Doc\Model\DocDirectory.cs" />
+    <Compile Include="Services\Doc\Model\DocDirectory.g.cs" />
+    <Compile Include="Services\Doc\Model\DocFile.cs" />
+    <Compile Include="Services\Doc\Model\DocFile.g.cs" />
+    <Compile Include="Services\Doc\Model\DocFileData.cs" />
+    <Compile Include="Services\Doc\Model\DocFileData.g.cs" />
+    <Compile Include="Services\Doc\Model\DocFileGroup.cs" />
+    <Compile Include="Services\Doc\Model\DocFileGroup.g.cs" />
+    <Compile Include="Services\Doc\Model\DocModule.cs" />
+    <Compile Include="Services\Doc\Model\DocModule.g.cs" />
+    <Compile Include="Services\Doc\Model\DocVersionGroup.cs" />
+    <Compile Include="Services\Doc\Model\DocVersionGroup.g.cs" />
+    <Compile Include="Services\Doc\Model\TempFileData.cs" />
+    <Compile Include="Services\Doc\Model\TempFileData.g.cs" />
+    <Compile Include="Services\Doc\DTO\FileObjectData.cs" />
+    <Compile Include="Services\Doc\DTO\FileObject.cs" />
+    <Compile Include="Model\Org\OrgFunction.cs" />
+    <Compile Include="Model\Org\OrgFunction.g.cs" />
+    <Compile Include="Model\Org\OrgFunctionRole.cs" />
+    <Compile Include="Model\Org\OrgFunctionRole.g.cs" />
+    <Compile Include="Model\Org\OrgGroupFunction.cs" />
+    <Compile Include="Model\Org\OrgGroupFunction.g.cs" />
+    <Compile Include="Model\Org\OrgRoleAuth.cs" />
+    <Compile Include="Model\Org\OrgRoleAuth.g.cs" />
+    <Compile Include="Model\Org\OrgUserAuth.cs" />
+    <Compile Include="Model\Org\OrgUserAuth.g.cs" />
+    <Compile Include="Model\Mdl\ModuleType.cs" />
+    <Compile Include="Model\Org\OrgUserGroup.cs" />
+    <Compile Include="Model\Org\OrgUserGroup.g.cs" />
+    <Compile Include="Model\Sys\Application.cs" />
+    <Compile Include="Model\Auth\Auth.cs" />
+    <Compile Include="Model\Auth\AuthType.cs" />
+    <Compile Include="Model\Reg\Enumeration.cs" />
+    <Compile Include="Model\Sys\Event.cs" />
+    <Compile Include="Model\Org\OrgGroup.cs" />
+    <Compile Include="Model\Org\OrgType.cs" />
+    <Compile Include="Model\Mdl\Module.cs" />
+    <Compile Include="Model\Reg\Parameter.cs" />
+    <Compile Include="Model\Reg\ParameterCatalog.cs" />
+    <Compile Include="Model\Org\OrgRole.cs" />
+    <Compile Include="Model\Sys\SysSystem.cs" />
+    <Compile Include="Model\Dev\SysTableStructure.cs" />
+    <Compile Include="Model\Org\OrgUser.cs" />
+    <Compile Include="Model\Sys\Application.g.cs" />
+    <Compile Include="Model\Auth\Auth.g.cs" />
+    <Compile Include="Model\Auth\AuthType.g.cs" />
+    <Compile Include="Model\Reg\Enumeration.g.cs" />
+    <Compile Include="Model\Sys\Event.g.cs" />
+    <Compile Include="Model\Sys\EventType.g.cs" />
+    <Compile Include="Model\Org\OrgGroup.g.cs" />
+    <Compile Include="Model\Org\OrgType.g.cs" />
+    <Compile Include="Model\Mdl\Module.g.cs" />
+    <Compile Include="Model\Mdl\ModuleType.g.cs" />
+    <Compile Include="Model\Reg\Parameter.g.cs" />
+    <Compile Include="Model\Reg\ParameterCatalog.g.cs" />
+    <Compile Include="Model\Org\OrgRole.g.cs" />
+    <Compile Include="Model\Dev\SysTableStructure.g.cs" />
+    <Compile Include="Model\Org\OrgUser.g.cs" />
+    <Compile Include="Model\Msg\Message.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\Msg\Message.g.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Model\Msg\MessageTag.cs" />
+    <Compile Include="Services\Auth\AuthService.cs" />
+    <Compile Include="Services\Message\MsgService.cs" />
+    <Compile Include="Interfaces\Providers\IScheduleServiceProvider.cs" />
+    <Compile Include="Services\TaskScheduler\Job\TaskJob.cs" />
+    <Compile Include="Model\Job\AssemblyTaskConfig.cs" />
+    <Compile Include="Model\Job\IAction.cs" />
+    <Compile Include="Model\Job\MessageTaskConfig.cs" />
+    <Compile Include="Model\Job\Scheduler.cs" />
+    <Compile Include="Model\Job\Scheduler.g.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Model\Job\SchedulerConfig.cs" />
+    <Compile Include="Model\Job\Task.cs" />
+    <Compile Include="Model\Job\Task.g.cs" />
+    <Compile Include="Model\Job\TaskConfig.cs" />
+    <Compile Include="Model\Job\TaskInstance.cs" />
+    <Compile Include="Model\Job\TaskInstance.g.cs" />
+    <Compile Include="Services\TaskScheduler\SchedulerService.cs" />
+    <Compile Include="Services\Template\TmplHelper.cs" />
+    <Compile Include="Services\Workflow\Activity\EndActivity.cs" />
+    <Compile Include="Services\Workflow\Objects\ActionRequest.cs" />
+    <Compile Include="Model\Wf\ActionSourceInfo.cs" />
+    <Compile Include="Model\Wf\WfActionState.cs" />
+    <Compile Include="Model\Wf\WfAction.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Model\Wf\WfAction.g.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Model\Wf\WfActionLog.g.cs" />
+    <Compile Include="Model\Wf\WfDefine.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Model\Wf\WfDefine.g.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Model\Wf\WfInstance.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Model\Wf\WfInstance.g.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Model\Wf\WfTask.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Model\Wf\WfTask.g.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Model\IdentifierGenerator.cs" />
+    <Compile Include="Model\ModelBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Cache\CacheService.cs" />
+    <Compile Include="Services\Cache\FileCache.cs" />
+    <Compile Include="Services\Cache\PortalCache.cs" />
+    <Compile Include="Services\Cache\StreamCache.cs" />
+    <Compile Include="Services\Template\SN\SNService.cs" />
+    <Compile Include="Services\Template\SN\NumberGenerator.cs" />
+    <Compile Include="Services\Data\Enums\TemplateFileType.cs" />
+    <Compile Include="Services\Data\Objects\CellPosition.cs" />
+    <Compile Include="Services\Data\Objects\TemplateConfigProcessor.cs" />
+    <Compile Include="Services\Data\Objects\TemplateNode.cs" />
+    <Compile Include="Services\Data\Objects\TemplateNodeAttribute.cs" />
+    <Compile Include="Services\Data\Objects\TemplateParser.cs" />
+    <Compile Include="Services\Data\Objects\TemplateStructure.cs" />
+    <Compile Include="Interfaces\Providers\IPortalServiceProvider.cs" />
+    <Compile Include="Services\Log\LogContent.cs" />
+    <Compile Include="Services\Log\LogService.cs" />
+    <Compile Include="Services\Portal\PortalService.cs" />
+    <Compile Include="Services\SystemInfo.cs" />
+    <Compile Include="Services\Template\Objects\DataRequestTemplate.cs" />
+    <Compile Include="Services\Workflow\Objects\ActorCollection.cs" />
+    <Compile Include="Services\Workflow\Objects\BaseFlowRequest.cs" />
+    <Compile Include="Services\Workflow\Objects\ActionState.cs" />
+    <Compile Include="Services\Workflow\Objects\TaskNode.cs" />
+    <Compile Include="Services\Workflow\Objects\FlowContext.cs" />
+    <Compile Include="Services\Workflow\WfActorHelper.cs" />
+    <Compile Include="Services\Workflow\Designer\TaskActivityDesigner.xaml.cs">
+      <DependentUpon>TaskActivityDesigner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Wf\FlowInfo.cs" />
+    <Compile Include="Services\Workflow\Designer\FlowRouteCollectionEditor.cs" />
+    <Compile Include="Services\Workflow\Objects\TaskRequest.cs" />
+    <Compile Include="Services\Workflow\Objects\FlowRoute.cs" />
+    <Compile Include="Services\Workflow\Objects\FlowRouteCollection.cs" />
+    <Compile Include="Services\Workflow\Objects\FlowState.cs" />
+    <Compile Include="Services\Workflow\Activity\PortalActivity.cs" />
+    <Compile Include="Services\Workflow\Activity\TaskActivity.cs" />
+    <Compile Include="Services\Workflow\Objects\PortalState.cs" />
+    <Compile Include="Services\Workflow\Objects\TaskState.cs" />
+    <Compile Include="Services\Workflow\Objects\FlowRequest.cs" />
+    <Compile Include="Model\Wf\WfInstanceState.cs" />
+    <Compile Include="Services\Workflow\WfHelper.cs" />
+    <Compile Include="Model\Wf\WfTaskState.cs" />
+    <Compile Include="Web\ContextModule.cs" />
+    <Compile Include="Web\DataRequest.cs" />
+    <Compile Include="Web\PortalVirtualFile.cs" />
+    <Compile Include="Web\PortalVirtualPathProvider.cs" />
+    <Compile Include="QueryPath.cs" />
+    <Compile Include="Web\QueryPath\DataQueryPath.cs" />
+    <Compile Include="Web\QueryPath\QueryPath.cs" />
+    <Compile Include="SimpleUserInfo.cs" />
+    <Compile Include="Web\Services\UserSessionService\UserSessionServer.cs" />
+    <Compile Include="Web\Services\UserSessionService\UserSessionService.cs" />
+    <Compile Include="Web\UI\BaseControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UI\BaseDataPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UI\BaseFlowPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UI\BaseFormPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UI\BaseListPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UI\BaseMasterPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UI\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UI\BaseSearchControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UI\BaseSimplePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UI\PageStateContainer.cs" />
+    <Compile Include="Web\WebCacheProvider.cs" />
+    <Compile Include="Web\WebMessage.cs" />
+    <Compile Include="Web\WebPortalService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Services\Workflow\Designer\TaskActivityDesigner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <XamlAppdef Include="Services\Workflow\Designer\TestActivity.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </XamlAppdef>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PIC.Component\PIC.Component.csproj">
+      <Project>{fd325c49-a53f-4515-8469-d304bedbaea3}</Project>
+      <Name>PIC.Component</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PIC.Core\PIC.Core.csproj">
+      <Project>{4cb4b35d-4816-44ab-809f-f3cd382f4173}</Project>
+      <Name>PIC.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Idstar">
+      <Guid>{77E792B2-AD26-4CC5-B138-AF3389AE9B28}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

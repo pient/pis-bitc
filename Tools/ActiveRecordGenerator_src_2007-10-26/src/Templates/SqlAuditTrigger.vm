@@ -1,0 +1,78 @@
+##FILENAME:TR_${table.GetClassName()}_Audit.sql
+##
+## Generate a SQL stored procedure to audit record updates in the 
+## specified table into an AuditChanges table related to a
+## pre-populated AuditFields table. 
+##
+#set ($triggername = "TR_${table.GetClassName()}_Audit")
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+## we are executing the stored procedure as a string, so double up on any quotes.
+EXEC dbo.sp_executesql @statement = N'
+CREATE TRIGGER [dbo].[$triggername]
+   ON  [${table.ToString()}]
+   AFTER UPDATE
+AS 
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+	DECLARE @OldValue  nvarchar(50), @NewValue nvarchar(50);
+#set ($fkdeclared = 0)
+#foreach($f in $fields)
+#if ($f.IsPrimaryKey())
+#set ($pkfield = "${f.Column_Name}")
+#set ($pkvar = "@pk_${f.Column_Name}")
+#set ($pkdecl = "$pkvar ${f.GetSqlType()}")
+	DECLARE $pkdecl;
+	SELECT $pkvar = $pkfield FROM deleted ;
+#end
+#if ($f.IsForeignKey())
+#if ($fkdeclared == 0)
+	DECLARE @OldField_ID int, @NewField_ID int;
+#set ($fkdeclared = 1)
+#end
+#end
+#end
+
+    -- only journal user changes, not system changes
+	IF SYSTEM_USER != ''sa''
+	BEGIN
+#foreach($f in $fields)
+#if (!$f.IsPrimaryKey())
+		IF UPDATE([${f.Column_Name}])
+		BEGIN
+#if ($f.IsForeignKey())
+			SELECT @OldField_ID = [${f.Column_Name}] FROM DELETED;
+			SELECT @NewField_ID = [${f.Column_Name}] FROM INSERTED;
+##TODO: fetch the first nvarchar or varchar field in the related table
+			SELECT @OldValue = ISNULL( [${f.ForeignKeyInfo.PK_DescriptorColumn}], ''<null>'') FROM [dbo].[${f.ForeignKeyInfo.PK_Table}] WHERE ID = @OldField_ID;
+			SELECT @NewValue = ISNULL( [${f.ForeignKeyInfo.PK_DescriptorColumn}], ''<null>'') FROM [dbo].[${f.ForeignKeyInfo.PK_Table}] WHERE ID = @NewField_ID;
+#else
+#if (($f.GetSqlType().IndexOf("char") > 0) && $f.Character_Maximum_Length >=6 )
+#set ($charfield = "[${f.Column_Name}]")
+#else
+#set ($charfield = "CONVERT(varchar(50), [${f.Column_Name}])")
+#end
+			SELECT @OldValue = ISNULL( $charfield, ''<null>'') FROM DELETED;
+			SELECT @NewValue = ISNULL( $charfield, ''<null>'') FROM INSERTED;
+#end			
+			IF @OldValue != @NewValue
+			BEGIN
+				PRINT @OldValue + '' -> '' + @NewValue
+				INSERT INTO [dbo].[AuditChanges]
+					(AuditField_ID, URecord_ID, OldValue, NewValue, ModUser, ModDate)
+				SELECT TOP 1 af.ID, $pkvar, @OldValue, @NewValue, SYSTEM_USER, GetDate()
+					FROM dbo.AuditFields af WHERE af.TableName = ''${table.ToString()}'' AND af.FieldName = ''${f.Column_Name}''
+			END
+		END
+#end
+#end
+	END
+END;'
+GO

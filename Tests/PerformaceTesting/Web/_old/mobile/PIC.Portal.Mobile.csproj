@@ -1,0 +1,606 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3C99B655-A031-4225-B02E-8DED85CAAB6B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PIC.Portal.Mobile</RootNamespace>
+    <AssemblyName>PIC.Portal.Mobile</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="Images\car1.jpg" />
+    <Content Include="Images\car2.jpg" />
+    <Content Include="Images\car3.jpg" />
+    <Content Include="Images\car4.jpg" />
+    <Content Include="Images\car5.jpg" />
+    <Content Include="Images\car6.jpg" />
+    <Content Include="Images\car7.jpg" />
+    <Content Include="Scripts\app\index.js" />
+    <Content Include="Scripts\app\home.js" />
+    <Content Include="Scripts\lib\ext\resources\css-debug\android.css" />
+    <Content Include="Scripts\lib\ext\resources\css-debug\apple.css" />
+    <Content Include="Scripts\lib\ext\resources\css-debug\bb6.css" />
+    <Content Include="Scripts\lib\ext\resources\css-debug\sencha-touch.css" />
+    <Content Include="Scripts\lib\ext\resources\css\android.css" />
+    <Content Include="Scripts\lib\ext\resources\css\apple.css" />
+    <Content Include="Scripts\lib\ext\resources\css\bb6.css" />
+    <Content Include="Scripts\lib\ext\resources\css\sencha-touch.css" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\check.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\disclosure.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\dotgrid.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\loading.gif" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\action.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\add.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\add1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\address_book.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\add_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\arrow_down.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\arrow_left.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\arrow_right.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\arrow_up.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\at.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\atom.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\attachment.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\attachment2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\attachment3.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\attachment_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\backspace.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\battery_full.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\battery_low.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\battery_power.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\blank.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\bolt.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\bolt_side.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\bookmark1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\bookmark2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\bookmarks.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\bookmark_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\briefcase1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\briefcase2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\brightness1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\brightness2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\broadcast.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\bug.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\bulb.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\bullseye1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\bullseye2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\calendar.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\calendar2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\calendar_add.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\card1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\card2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\chart1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\chart2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\chart3.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\chat.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\chat1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\chat2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\chat3.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\chat4.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\chat_black1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\chat_black2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\check1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\check2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\check_black1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\check_black2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\check_dotted.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\circle.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\circle2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\clash.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\cloud.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\cloud_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\cloud_black_upload1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\cloud_black_upload2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\cloud_bolt.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\cloud_download.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\code1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\code2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\compass1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\compass2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\compass3.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\compose.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\compose1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\compose2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\compose3.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\compose_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\contract.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\cube.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\data.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\delete.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\delete1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\delete_black1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\delete_black2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\doc.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\doc2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\docs1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\docs2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\docs_black1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\docs_black2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\doc_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\doc_black_landscape.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\doc_compose1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\doc_compose2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\doc_delete.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\doc_down.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\doc_drawer.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\doc_list.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\doc_new.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\doc_send.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\doc_up.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\download.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\download1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\download2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\download_screen.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\eject.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\empty1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\empty2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\equalizer1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\equalizer2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\event_complete.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\expand.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\favorites.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\favorites1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\favorites_circle.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\fforward.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\find.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\flag.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\flickr2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\folder.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\folder_add.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\folder_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\folder_black_open.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\folder_delete.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\folder_delete2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\folder_lock.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\folder_open2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\font.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\forbidden.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\forward_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\globe1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\globe2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\globe_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\headphones.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\heart.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\heart_circle.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\help.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\help_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\home.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\home2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\hot.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\inbox1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\inbox2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\inbox3.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\infinite.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\infinite2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\info.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\info2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\info_plain.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\info_plain2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\json.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\lab.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\layout.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\link1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\link2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\link_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\list.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\locate.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\locate1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\locate2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\locate3.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\locate4.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\lock_closed.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\lock_open.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\look.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\loop.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\loop2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\loop_circle.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\magic.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\mail.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\mail1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\mail2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\mail3.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\mail4.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\mail5.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\maps.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\mic.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\minus1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\minus2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\minus_black1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\minus_black2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\monitor1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\monitor2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\monitor3.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\monitor4.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\more.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\mouse.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\move.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\music1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\music2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\nodes1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\nodes2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\note1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\note2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\note3.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\note_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\nuclear.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\organize.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\outbox.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\pause.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\phone1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\phone2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\phone_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\phone_ring1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\phone_ring2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\photo1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\photo2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\photo3.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\photos1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\photos2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\photos4.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\photo_black1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\photo_black2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\piechart.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\play1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\play2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\play_black1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\play_black2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\podcast.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\power socket.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\power_on.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\print.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\print2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\quote1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\quote2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\quote_black1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\quote_black2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\quote_black3.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\refresh.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\refresh1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\refresh2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\refresh3.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\refresh5.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\reply.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\replytoall.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\resize.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\resize_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\rewind.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\right.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\right2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\rss.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\rss2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\rss_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\rss_black1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\rss_black2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\screens.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\search.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\search1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\search2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\search_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\server.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\servers.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\settings.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\settings1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\settings10.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\settings11.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\settings3.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\settings4.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\settings5.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\settings6.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\settings7.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\settings8.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\settings9.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\settings_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\share.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\shield1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\shield2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\shop1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\shop2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\shuffle.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\sign_backforth.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\sign_cross.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\sign_leftright.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\sign_leftright2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\sign_split.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\sign_switch.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\sign_uturn.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\spaces1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\spaces2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\speedometer1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\speedometer2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\speedometer_black1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\speedometer_black2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\star.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\stop1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\stop2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\sync.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\tabbed_book.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\tag.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\tags.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\tag_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\team.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\team1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\time.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\time_repeat.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\trash.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\trash2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\trash_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\tree.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\tv.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\tweak.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\twitter1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\twitter2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\up1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\up2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\upload2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\up_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\user.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\user3.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\user_add.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\user_business.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\user_fave.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\user_list.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\user_list2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\user_remote1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\user_remove2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\user_send.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\video.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\video_black1.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\video_black2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\volume.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\volume_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\volume_down.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\volume_mute.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\volume_up.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\warming_dotted.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\warning_black.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\wifi.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\wifi2.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\wifi3.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\wifi4.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pictos\window.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\pullarrow.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\select_mask.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\tip.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\tip_horizontal.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\tip_right.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\togglebg.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\togglemask.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\togglethumb.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\togglethumbbg.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\togglethumbmask.png" />
+    <Content Include="Scripts\lib\ext\resources\themes\images\default\trackmask_outer.png" />
+    <Content Include="Scripts\lib\ext\sencha-touch-debug-w-comments.js" />
+    <Content Include="Scripts\lib\ext\sencha-touch-debug.js" />
+    <Content Include="Scripts\lib\ext\sencha-touch.js" />
+    <None Include="Services\reserve.json" />
+    <Content Include="Templates\about.html" />
+    <Content Include="Templates\credits.html" />
+    <Content Include="Scripts\oreilly\oreilly-all-debug.js" />
+    <Content Include="Scripts\oreilly\oreilly-all.js" />
+    <Content Include="Styles\oreilly.css" />
+    <Content Include="Images\avatar.jpg" />
+    <Content Include="Images\icon_114.png" />
+    <Content Include="Images\icon_114b.png" />
+    <Content Include="Images\icon_57.png" />
+    <Content Include="Images\icon_57b.png" />
+    <Content Include="Images\sencha.png" />
+    <Content Include="Images\startup.png" />
+    <Content Include="Images\startup_640.png" />
+    <Content Include="Scripts\oreilly\sencha-touch-mod-debug.js" />
+    <Content Include="Scripts\oreilly\sencha-touch-mod.js" />
+    <Content Include="Templates\sponsors.html" />
+    <Content Include="Scripts\oreilly\src\AboutList.js" />
+    <Content Include="Scripts\oreilly\src\App.js" />
+    <Content Include="Scripts\oreilly\src\HtmlPage.js" />
+    <Content Include="Scripts\oreilly\src\index.js" />
+    <Content Include="Scripts\oreilly\src\LocationMap.js" />
+    <Content Include="Scripts\oreilly\src\Models.js" />
+    <Content Include="Scripts\oreilly\src\SessionDetail.js" />
+    <Content Include="Scripts\oreilly\src\SessionList.js" />
+    <Content Include="Scripts\oreilly\src\SpeakerDetail.js" />
+    <Content Include="Scripts\oreilly\src\SpeakerList.js" />
+    <Content Include="Scripts\oreilly\src\TweetList.js" />
+    <Content Include="Scripts\oreilly\src\VideoList.js" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\lib\jquery\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\lib\jquery\jquery-1.4.1.js" />
+    <Content Include="Scripts\lib\jquery\jquery-1.4.1.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <None Include="Services\video.json" />
+    <None Include="Services\message.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Web.config" />
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\lib\ext\resources\psd\tabs.psd" />
+    <None Include="Scripts\lib\ext\resources\sass\android.scss" />
+    <None Include="Scripts\lib\ext\resources\sass\apple.scss" />
+    <None Include="Scripts\lib\ext\resources\sass\bb6.scss" />
+    <None Include="Scripts\lib\ext\resources\sass\config-debug.rb" />
+    <None Include="Scripts\lib\ext\resources\sass\config-release.rb" />
+    <None Include="Scripts\lib\ext\resources\sass\config.rb" />
+    <None Include="Scripts\lib\ext\resources\sass\sencha-touch.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\compass_init.rb" />
+    <None Include="Scripts\lib\ext\resources\themes\lib\theme_images.rb" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\core\_core.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\core\_layout.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\core\_reset.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\widgets\_buttons.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\widgets\_carousel.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\widgets\_form-sliders-basic.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\widgets\_form-sliders.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\widgets\_form.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\widgets\_indexbar.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\widgets\_list.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\widgets\_loading-spinner.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\widgets\_map.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\widgets\_msgbox.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\widgets\_panel.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\widgets\_picker.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\widgets\_sheets.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\widgets\_tabs.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\widgets\_toolbar-forms.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\widgets\_toolbar.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\_all.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\_core.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\_global.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\_mixins.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\_variables.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\stylesheets\sencha-touch\default\_widgets.scss" />
+    <None Include="Scripts\lib\ext\resources\themes\templates\project\manifest.rb" />
+    <None Include="Scripts\lib\ext\resources\themes\templates\project\sencha-touch.scss" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3728</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

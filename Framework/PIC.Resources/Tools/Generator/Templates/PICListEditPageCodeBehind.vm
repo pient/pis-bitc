@@ -1,0 +1,127 @@
+##FILENAME:${table.GetClassName()}ListEdit.aspx.cs
+##
+## Castle ActiveRecord entity class
+##
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Castle.ActiveRecord;
+using NHibernate;
+using NHibernate.Criterion;
+using PIC.Data;
+using PIC.Portal.Web;
+using PIC.Portal.Web.UI;
+using ${namespace}.Model;
+
+namespace ${namespace}.Web
+{
+    public partial class ${table.GetClassName()}ListEdit : BaseListPage
+    {
+        #region 变量
+
+        private IList<${table.GetClassName()}> ents = null;
+
+        #endregion
+
+        #region 构造函数
+
+        #endregion
+
+        #region ASP.NET 事件
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+			${table.GetClassName()} ent = null;
+            switch (this.RequestAction)
+            {
+                case RequestActionEnum.Delete:
+                    ent = this.GetTargetData<${table.GetClassName()}>();
+                    ent.DoDelete();
+                    this.SetMessage("删除成功！");
+                    break;
+                default:
+                    if (RequestActionString == "batchdelete")
+                    {
+						DoBatchDelete();
+                    } 
+                    else if (RequestActionString == "batchsave")
+                    {
+                        DoBatchSave();
+                    }
+                    else 
+                    {
+						DoSelect();
+					}
+					break;
+            }
+            
+        }
+
+        #endregion
+
+        #region 私有方法
+		
+		/// <summary>
+        /// 查询
+        /// </summary>
+		private void DoSelect()
+		{
+			ents = ${table.GetClassName()}.FindAll(SearchCriterion);
+			this.PageState.Add("${table.GetClassName()}List", ents);
+		}
+
+        /// <summary>
+        /// 批量保存
+        /// </summary>
+        [ActiveRecordTransaction]
+        private void DoBatchSave()
+        {
+            IList<string> entStrList = RequestData.GetList<string>("data");
+
+            if (entStrList != null && entStrList.Count > 0)
+            {
+                IList<${table.GetClassName()}> ents = entStrList.Select(tent => JsonHelper.GetObject<${table.GetClassName()}>(tent) as ${table.GetClassName()}).ToList();
+
+                foreach (${table.GetClassName()} ent in ents)
+                {
+                    if (ent != null)
+                    {
+                        ${table.GetClassName()} tent = ent;
+
+                        if (String.IsNullOrEmpty(tent.Id))
+                        {
+                            tent.CreateId = UserInfo.UserID;
+                            tent.CreatorName = UserInfo.Name;
+                        }
+                        else
+                        {
+                            tent = DataHelper.MergeData(${table.GetClassName()}.Find(tent.Id), tent);
+                        }
+
+                        tent.DoSave();
+                    }
+                }
+            }
+        }
+		
+		/// <summary>
+        /// 批量删除
+        /// </summary>
+		[ActiveRecordTransaction]
+		private void DoBatchDelete()
+		{
+			IList<object> idList = RequestData.GetList<object>("IdList");
+
+			if (idList != null && idList.Count > 0)
+			{                   
+				${table.GetClassName()}.DoBatchDelete(idList.ToArray());
+			}
+		}
+
+        #endregion
+    }
+}

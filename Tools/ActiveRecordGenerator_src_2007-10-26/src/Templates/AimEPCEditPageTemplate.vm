@@ -1,0 +1,90 @@
+##FILENAME:${table.GetClassName()}Edit.aspx
+##
+## Castle ActiveRecord EditPage
+##
+
+<%@ Page Title="标题" Language="C#" MasterPageFile="~/Masters/Ext/formpage.Master" AutoEventWireup="true" CodeBehind="${table.GetClassName()}Edit.aspx.cs" Inherits="$namespace.${table.GetClassName()}Edit" %>
+
+<asp:Content ID="HeadContent" ContentPlaceHolderID="HeadHolder" runat="server">
+
+    <script type="text/javascript">
+        
+        function onPgLoad() {
+            setPgUI();
+        }
+
+        function setPgUI() {
+            if (pgOperation == "c" || pgOperation == "cs") {                
+                $("#CreateName").val(AimState.UserInfo.Name);
+                $("#CreateTime").val(jQuery.dateOnly(AimState.SystemInfo.Date));
+            }
+            
+            //绑定按钮验证
+            FormValidationBind('btnSubmit', SuccessSubmit);
+
+            $("#btnCancel").click(function() {
+                window.close();
+            });
+        }
+
+        //验证成功执行保存方法
+        function SuccessSubmit() {
+            AimFrm.submit(pgAction, {}, null, SubFinish);
+        }
+
+        function SubFinish(args) {
+            RefreshClose();
+        }
+    </script>
+
+</asp:Content>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="BodyHolder" runat="server">
+    <div id="header"><h1>标题</h1></div>
+    
+    <div id="editDiv" align="center">
+        <table class="aim-ui-table-edit">
+            <tbody>
+                <tr style="display: none">
+                    <td>
+                        <input id="Id" name="Id" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="aim-ui-td-caption">
+                        编码
+                    </td>
+                    <td class="aim-ui-td-data">
+                        <input id="Code" name="Code" class="validate[required]" />
+                    </td>
+                    <td class="aim-ui-td-caption">
+                        名称
+                    </td>
+                    <td class="aim-ui-td-data">
+                        <input id="Name" name="Name" class="validate[required]" />
+                    </td>
+                </tr>
+                <tr width="100%">
+                    <td class="aim-ui-td-caption" >
+                        录入人
+                    </td>
+                    <td class="aim-ui-td-data">
+                        <input disabled id="CreateName" name="CreateName" />
+                    </td>
+                    <td class="aim-ui-td-caption" >
+                        录入日期
+                    </td>
+                    <td class="aim-ui-td-data">
+                        <input disabled id="CreateTime" name="CreateTime" dateonly="true" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="aim-ui-button-panel" colspan="4">
+                        <a id="btnSubmit" class="aim-ui-button submit">提交</a>
+                        <a id="btnCancel" class="aim-ui-button cancel">取消</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</asp:Content>
+

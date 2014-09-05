@@ -1,0 +1,51 @@
+##FILENAME:PR_${table.GetClassName()}_Update.sql
+##
+## Generate a SQL stored procedure to update a record in the 
+## specified table based on the primary key
+##
+## FUTURE: The generated procedure can support journalling, etc.
+##
+#set ($procname = "PR_${table.GetClassName()}_Update")
+#set ($prefix = '')
+#set ($lbrace = '[')
+#set ($rbrace = ']')
+#set ($whereclause = '')
+#set ($paramtypes = '')
+#set ($setfields = '')
+#foreach($f in $fields)
+## composite primary keys are not supported
+#if ($f.IsPrimaryKey())
+#set ($whereclause = "$whereclause$lbrace${f.Column_Name}$rbrace = @p${f.Column_Name} ")
+#end
+#set ($paramtypes = "$paramtypes$prefix@p${f.Column_Name} ${f.GetSqlType()}")
+#set ($prefix = ', ')
+#end
+#set ($prefix = '')
+#foreach($f in $fields)
+#if (!$f.IsPrimaryKey())
+#set ($setfields = "$setfields$prefix$lbrace${f.Column_Name}$rbrace = @p${f.Column_Name}")
+#set ($prefix = ', ')
+#end
+#end
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[$procname]') AND type in (N'P', N'PC'))
+BEGIN
+	DROP PROCEDURE [dbo].[$procname];
+END;
+
+## we are executing the stored procedure as a string, so double up on any quotes.
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE [dbo].[$procname]
+	($paramtypes)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	UPDATE [dbo].$lbrace${table}$rbrace SET $setfields
+		WHERE $whereclause ;	
+END;
+'
+GO

@@ -1,0 +1,121 @@
+##FILENAME:${table.GetClassName()}.cs
+##
+## Castle ActiveRecord entity class
+##
+// Business class ${table.GetClassName()} generated from ${table}
+// Creator: Ray
+// Created Date: [$date]
+
+using System;
+using System.ComponentModel;
+using Newtonsoft.Json;
+using Castle.ActiveRecord;
+using Aim.Data;
+
+namespace $namespace
+{
+	[ActiveRecord("$table")]
+	public $Partial class ${table.GetClassName()} : EntityBase<${table.GetClassName()}> #if ($PropChange), INotifyPropertyChanged #end
+
+	{
+
+## property names (to avoid mis-spelling in an NHibernate Criteria)
+		#region Property_Names
+
+#foreach ($f in $fields)
+		public static string Prop_${f.GetPropertyName()} = "${f.GetPropertyName()}";
+#end
+
+		#endregion
+
+## private variables
+		#region Private_Variables
+
+#foreach ($f in $fields)
+		private ${f.GetNetType()} ${f.GetPrivateVariableName()};
+#end
+
+		#endregion
+
+		#region Constructors
+
+## -- declare simple constructor
+		public ${table.GetClassName()}()
+		{
+		}
+
+##-- declare full constructor
+		public ${table.GetClassName()}(
+#set ($suffix = ",")
+#foreach ($f in $fields)
+#if ($velocityCount < $fields.Length)
+#set ($suffix = ",")
+#else
+#set ($suffix = ")")
+#end
+			${f.GetNetType()} p${f.GetPrivateVariableName()}$suffix
+#end
+##-- constructor body
+		{
+##-- assign parameters to private variables
+#foreach ($f in $fields)
+			${f.GetPrivateVariableName()} = p${f.GetPrivateVariableName()};
+#end
+		}
+
+		#endregion
+
+		#region Properties
+
+##-- declare properties (getters / setters)
+#foreach ($f in $fields)
+		${f.GetFieldAttribute()}
+		public ${f.GetNetType()} ${f.GetPropertyName()}
+		{
+			get { return ${f.GetPrivateVariableName()}; }
+#if (!${f.IsPrimaryKey()})
+#if ($PropChange)
+			set
+			{
+				if (${f.GetInEqualityTest()})
+				{
+#if ($f.IsForeignKey())
+					if (value == null)
+						${f.GetPrivateVariableName()} = null;
+					else
+						${f.GetPrivateVariableName()} = (value.${f.ForeignKeyInfo.PK_Column} > 0) ? value : null;
+#else
+					${f.GetPrivateVariableName()} = value;
+#end
+					NotifyPropertyChanged(${table.GetClassName()}.Prop_${f.GetPropertyName()});
+				}
+			}
+#else
+			set { ${f.GetPrivateVariableName()} = value; }
+#end
+#end
+		}
+
+#end
+##TODO: map [hasmany()] properties using foreign key references
+		#endregion
+
+#if ($PropChange)
+		#region INotifyPropertyChanged Members
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		private void NotifyPropertyChanged(String info)
+		{
+			PropertyChangedEventHandler localPropertyChanged = PropertyChanged;
+			if (localPropertyChanged != null)
+			{
+				localPropertyChanged(this, new PropertyChangedEventArgs(info));
+			}
+		}
+
+		#endregion
+
+#end
+	} // ${table.GetClassName()}
+}

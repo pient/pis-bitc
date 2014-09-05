@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="UserSessionService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:37526/UserSessionService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:37526/UserSessionService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:37526/UserSessionService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PIC.Common.Authentication" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IUserSessionService_ExecuteService_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteService" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionService_ExecuteService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionService_CheckUserSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUserSession" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionService_CheckUserSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUserSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionService_ReleaseSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReleaseSession" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionService_ReleaseSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReleaseSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionService_AuthenticateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AuthenticateUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionService_AuthenticateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AuthenticateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionService_SetPrepRelease_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetPrepRelease" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionService_SetPrepRelease_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetPrepReleaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionService_RefreshSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:RefreshSession" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionService_RefreshSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RefreshSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionService_GetUserData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserData" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionService_GetUserData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionService_GetSystemData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemData" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionService_GetSystemData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemDataResponse" />
+  </wsdl:message>
+  <wsdl:portType msc:usingSession="false" name="IUserSessionService">
+    <wsdl:operation name="ExecuteService">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/ExecuteService" message="tns:IUserSessionService_ExecuteService_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/ExecuteServiceResponse" message="tns:IUserSessionService_ExecuteService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserSession">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserSessionService/CheckUserSession" message="tns:IUserSessionService_CheckUserSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserSessionService/CheckUserSessionResponse" message="tns:IUserSessionService_CheckUserSession_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReleaseSession">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserSessionService/ReleaseSession" message="tns:IUserSessionService_ReleaseSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserSessionService/ReleaseSessionResponse" message="tns:IUserSessionService_ReleaseSession_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserSessionService/AuthenticateUser" message="tns:IUserSessionService_AuthenticateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserSessionService/AuthenticateUserResponse" message="tns:IUserSessionService_AuthenticateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPrepRelease">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserSessionService/SetPrepRelease" message="tns:IUserSessionService_SetPrepRelease_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserSessionService/SetPrepReleaseResponse" message="tns:IUserSessionService_SetPrepRelease_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RefreshSession">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserSessionService/RefreshSession" message="tns:IUserSessionService_RefreshSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserSessionService/RefreshSessionResponse" message="tns:IUserSessionService_RefreshSession_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserSessionService/GetUserData" message="tns:IUserSessionService_GetUserData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserSessionService/GetUserDataResponse" message="tns:IUserSessionService_GetUserData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserSessionService/GetSystemData" message="tns:IUserSessionService_GetSystemData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserSessionService/GetSystemDataResponse" message="tns:IUserSessionService_GetSystemData_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IUserSessionService" type="tns:IUserSessionService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ExecuteService">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/ExecuteService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserSession">
+      <soap:operation soapAction="http://tempuri.org/IUserSessionService/CheckUserSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReleaseSession">
+      <soap:operation soapAction="http://tempuri.org/IUserSessionService/ReleaseSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <soap:operation soapAction="http://tempuri.org/IUserSessionService/AuthenticateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPrepRelease">
+      <soap:operation soapAction="http://tempuri.org/IUserSessionService/SetPrepRelease" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefreshSession">
+      <soap:operation soapAction="http://tempuri.org/IUserSessionService/RefreshSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserData">
+      <soap:operation soapAction="http://tempuri.org/IUserSessionService/GetUserData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemData">
+      <soap:operation soapAction="http://tempuri.org/IUserSessionService/GetSystemData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserSessionService">
+    <wsdl:port name="BasicHttpBinding_IUserSessionService" binding="tns:BasicHttpBinding_IUserSessionService">
+      <soap:address location="http://localhost:37526/UserSessionService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

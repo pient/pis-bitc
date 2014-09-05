@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Registry>
+  <System>
+    <Portal>
+
+    </Portal>
+    <Modules>
+
+    </Modules>
+    <Storage></Storage>
+    <Workflow></Workflow>
+    <Params>
+      <Node>
+        
+      </Node>
+    </Params>
+  </System>
+  <Applications>
+    <Application Name="Biz">
+    </Application>
+  </Applications>
+</Registry>

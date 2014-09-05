@@ -1,0 +1,235 @@
+##FILENAME:${table.GetClassName()}List.aspx
+##
+## Castle ActiveRecord ListPage
+##
+
+<%@ Page Title="标题" Language="C#" MasterPageFile="~/Masters/Ext/Site.Master" AutoEventWireup="true" CodeBehind="${table.GetClassName()}List.aspx.cs" Inherits="$namespace.${table.GetClassName()}List" %>
+
+<asp:Content ID="HeadContent" ContentPlaceHolderID="HeadHolder" runat="server">
+
+<script type="text/javascript">
+    var StatusEnum = { '1': '有效', '0': '无效' };
+    
+    var store, myData;
+    var pgBar, schBar, tlBar, titPanel, grid, viewport;
+
+    function onPgLoad() {
+        setPgUI();
+    }
+
+    function setPgUI() {
+
+        // 表格数据
+        myData = {
+            total: AimSearchCrit["RecordCount"],
+            records: AimState["${table.GetClassName()}List"] || []
+        };
+
+        // 表格数据源
+        store = new Ext.ux.data.AimJsonStore({
+            dsname: '${table.GetClassName()}List',
+            idProperty: '${table.GetPKField().Column_Name}',
+            data: myData,
+            fields: [
+#set ($i = 0)
+#foreach ($f in $fields)
+#set ($i = $i+1)
+#if($i==$fields.length)
+			{ name: '${f.GetPropertyName()}' }
+#else
+			{ name: '${f.GetPropertyName()}' },
+#end
+#end
+			]
+        });
+
+        // 分页栏
+        pgBar = new Ext.ux.AimPagingToolbar({
+            pageSize: AimSearchCrit["PageSize"],
+            store: store
+        });
+
+        // 搜索栏
+        schBar = new Ext.ux.AimSchPanel({
+            items: [
+				{ layout: 'form', unstyled: true, columnWidth: .33,
+                items: [new Ext.app.AimSearchField({ fieldLabel: '查询字段11', anchor: '90%', name: 'Field11', store: store, aimgrp: "usrgrp", qryopts: "{ mode: 'Like', field: 'Field11' }" }),
+                new Ext.app.AimSearchField({ fieldLabel: '查询字段21', anchor: '90%', name: 'Field21', store: store, aimgrp: "usrgrp", qryopts: "{ mode: 'Like', field: 'Field21' }" })]}, 
+                { layout: 'form', unstyled: true, columnWidth: .33,
+                items: [new Ext.app.AimSearchField({ fieldLabel: '查询字段12', anchor: '90%', name: 'Field12', store: store, aimgrp: "usrgrp", qryopts: "{ mode: 'Like', field: 'Field12' }" }),
+                new Ext.app.AimSearchField({ fieldLabel: '查询字段22', anchor: '90%', name: 'Field22', store: store, aimgrp: "usrgrp", qryopts: "{ mode: 'Like', field: 'Field22' }" })]}, 
+                { layout: 'form', unstyled: true, columnWidth: .33,
+                items: [new Ext.app.AimSearchField({ fieldLabel: '查询字段13', anchor: '90%', name: 'Field13', store: store, aimgrp: "usrgrp", qryopts: "{ mode: 'Like', field: 'Field13' }" }),
+                new Ext.app.AimSearchField({ fieldLabel: '查询字段23', anchor: '90%', name: 'Field23', store: store, aimgrp: "usrgrp", qryopts: "{ mode: 'Like', field: 'Field23' }" })]
+                }]
+            });
+
+            // 工具栏
+            tlBar = new Ext.ux.AimToolbar({
+                items: [{
+                    text: '添加',
+                    iconCls: 'aim-icon-add',
+                    handler: function() {
+                        openEditWin("${table.GetClassName()}Edit.aspx", "c");
+                    }
+                }, {
+                    text: '修改',
+                    iconCls: 'aim-icon-edit',
+                    handler: function() {
+                        openEditWin("${table.GetClassName()}Edit.aspx", "u");
+                    }
+                }, {
+                    text: '删除',
+                    iconCls: 'aim-icon-delete',
+                    handler: function() {
+						var recs = grid.getSelectionModel().getSelections();
+						if (!recs || recs.length <= 0) {
+							AimDlg.show("请先选择要删除的记录！");
+							return;
+						}
+						
+                        if (confirm("确定删除所选记录？")) {
+                            batchOperate('batchdelete', recs);
+                        }
+                    }
+                }, '-', {
+                    text: '其他',
+                    iconCls: 'aim-icon-cog',
+                    menu: [{ text: '导出Excel', iconCls: 'aim-icon-xls', handler: function() {
+                        ExtGridExportExcel(grid, { store: null, title: '标题' });
+                    } }]
+                }, '->', { text: '查询:' },
+                new Ext.app.AimSearchField({ store: store, schbutton: true, qryopts: "{ type: 'fulltext' }" }),
+                '-',
+                {
+                    text: '复杂查询',
+                    iconCls: 'aim-icon-search',
+                    handler: function() {
+                        schBar.toggleCollapse(false);
+
+                        setTimeout("viewport.doLayout()", 50);
+                    }
+}]
+                });
+
+                // 工具标题栏
+                titPanel = new Ext.ux.AimPanel({
+                    tbar: tlBar,
+                    items: [schBar]
+                });
+
+                // 表格面板
+                grid = new Ext.ux.grid.AimGridPanel({
+                    store: store,
+                    region: 'center',
+                    columns: [
+                    { id: '${table.GetPKField().Column_Name}', header: '标识', dataIndex: '${table.GetPKField().Column_Name}', hidden: true },
+                    new Ext.ux.grid.AimRowNumberer(),
+#set ($i = 0)
+#foreach ($f in $fields)
+#set ($i = $i+1)
+#if(${f.GetPropertyName()}!=${table.GetPKField().Column_Name})
+#if($i==$fields.length)
+					{ id: '${f.GetPropertyName()}', header: '${f.GetPropertyName()}', width: 100, #if(${f.GetPropertyName()}=="Name") renderer: linkRender, #end sortable: true, dataIndex: '${f.GetPropertyName()}' }
+#else
+					{ id: '${f.GetPropertyName()}', header: '${f.GetPropertyName()}', width: 100, #if(${f.GetPropertyName()}=="Name") renderer: linkRender, #end sortable: true, dataIndex: '${f.GetPropertyName()}' },
+#end
+#end
+#end
+                    ],
+                    bbar: pgBar,
+                    tbar: titPanel,
+                    //autoExpandColumn: 'Name',
+                    stateId: 'grid'
+                });
+
+                // 页面视图
+                viewport = new Ext.ux.AimViewport({
+                    items: [{ xtype: 'box', region: 'north', applyTo: 'header', height: 30 }, grid]
+                });
+            }
+
+            // 链接渲染
+            function linkRender(val, p, rec) {
+                var rtn = val;
+                switch (this.dataIndex) {
+                    case "Name":
+                        rtn = "<a class='aim-ui-link' onclick='openEditWin(\"${table.GetClassName()}Edit.aspx?id=" + rec.id + "\")'>" + val + "</a>";
+                        break;
+                }
+
+                return rtn;
+            }
+
+            // 枚举渲染
+            function enumRender(val, p, rec) {
+                var rtn = val;
+                switch (this.dataIndex) {
+                    case "Status":
+                        rtn = StatusEnum[val];
+                        break;
+                }
+
+                return rtn;
+            }
+            
+            // 打开模态窗口
+            function openEditWin(url, op, style) {
+                op = op || "r";
+                style = style || CenterWin("width=650,height=600,scrollbars=yes");
+
+                var sels = grid.getSelectionModel().getSelections();
+                var sel;
+                if (sels.length > 0) sel = sels[0];
+
+                var params = [];
+                params[params.length] = "op=" + op;
+                if (op !== "c") {
+                    if (sel) {
+                        if (url.indexOf("id=") < 0) {
+                            params[params.length] = "id=" + sel.json.${table.GetPKField().Column_Name};
+                        }
+                    } else {
+                        AimDlg.show('请选择需要操作的行。', '提示', 'alert');
+                        return;
+                    }
+                }
+
+                url = jQuery.combineQueryUrl(params, url)
+                rtn = OpenWin(url, "_blank", style);
+                if (rtn && rtn.result) {
+                    if (rtn.result === 'success') {
+                        store.reload();
+                    }
+                }
+            }
+
+            function batchOperate(action, recs, params, url) {
+                if (!url) url = null;
+
+                idList = [];
+
+                if (recs != null) {
+                    jQuery.each(recs, function() {
+                        idList.push(this.json["${table.GetPKField().Column_Name}"]);
+                    })
+                }
+
+                params = params || {};
+                params["IdList"] = idList;
+
+                jQuery.ajaxExec(action, params, onExecuted);
+            }
+
+            // 提交数据成功后
+            function onExecuted() {
+                store.reload();
+            }
+    
+    </script>
+
+</asp:Content>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="BodyHolder" runat="server">
+    <div id="header" style="display:none;"><h1>标题</h1></div>
+</asp:Content>
+

@@ -1,0 +1,66 @@
+##FILENAME:${table.GetClassName()}Edit.aspx
+##
+## Castle ActiveRecord EditPage
+##
+
+<%@ Page Title="${title}" Language="C#" AutoEventWireup="true" CodeBehind="${table.GetClassName()}Edit.aspx.cs" Inherits="${namespace}.Web.${table.GetClassName()}Edit" %>
+
+<asp:Content ID="HeadContent" ContentPlaceHolderID="HeadHolder" runat="server">
+
+    <script type="text/javascript">
+        
+        function onPgLoad() {
+            setPgUI();
+        }
+
+        function setPgUI() {
+            if (pgOperation == "c" || pgOperation == "cs") {
+                $("#CreatorName").val(PICState.UserInfo.Name);
+                $("#CreatedDate").val(jQuery.dateOnly(PICState.SystemInfo.Date));
+            }
+
+            // 页面视图
+            viewport = new Ext.ux.PICFrmViewport({
+                title: "${title}",
+                tbar: {
+                    xtype: 'picfrmtoolbar',
+                    items: [{
+                        xtype: 'picsavebutton',
+                        id: 'btnSubmit'
+                    }, '-', 'cancel', '->', '-', 'help']
+                }
+            });
+            
+            //绑定按钮验证
+            FormValidationBind('btnSubmit', SuccessSubmit);
+        }
+
+        //验证成功执行保存方法
+        function SuccessSubmit() {
+            PICFrm.submit(pgAction, {}, null, SubFinish);
+        }
+
+        function SubFinish(args) {
+            RefreshClose();
+        }
+    </script>
+
+</asp:Content>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="BodyHolder" runat="server">    
+    <div id="editDiv" align="center">
+        <table class="pic-ui-table-edit">
+            <tbody>
+                <tr style="display: none">
+                    <td>
+                        <input id="${table.GetPkField().GetPropertyName()}" name="${table.GetPkField().GetPropertyName()}" />
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div id="descDiv" class="pic-ui-form-desc">
+        表单描述：${title}
+    </div>
+</asp:Content>
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PIC.Common.Authentication" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PIC.Common.Authentication" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="LoginTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PCClient" />
+      <xs:enumeration value="PCIE" />
+      <xs:enumeration value="Unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="LoginTypeEnum" nillable="true" type="tns:LoginTypeEnum" />
+</xs:schema>

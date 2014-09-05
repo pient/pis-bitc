@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ebafce79-c17e-411a-ac79-b7bf03219f44" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:37526/UserSessionService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="UserSessionService.xsd" MetadataType="Schema" ID="0ae8bb63-adcc-4db3-ada6-acfdd659e198" SourceId="1" SourceUrl="http://localhost:37526/UserSessionService.svc?xsd=xsd2" />
+    <MetadataFile FileName="UserSessionService.disco" MetadataType="Disco" ID="a003c394-ad59-47e1-a52b-e454d519b924" SourceId="1" SourceUrl="http://localhost:37526/UserSessionService.svc?disco" />
+    <MetadataFile FileName="UserSessionService.wsdl" MetadataType="Wsdl" ID="0986f6c7-b986-433b-83fa-32ead9f40b0e" SourceId="1" SourceUrl="http://localhost:37526/UserSessionService.svc?wsdl" />
+    <MetadataFile FileName="UserSessionService1.xsd" MetadataType="Schema" ID="56a9147f-67b9-4135-95fb-17676996dc43" SourceId="1" SourceUrl="http://localhost:37526/UserSessionService.svc?xsd=xsd0" />
+    <MetadataFile FileName="UserSessionService2.xsd" MetadataType="Schema" ID="e9d7a023-ffa4-4d27-a94c-83a486290e3d" SourceId="1" SourceUrl="http://localhost:37526/UserSessionService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

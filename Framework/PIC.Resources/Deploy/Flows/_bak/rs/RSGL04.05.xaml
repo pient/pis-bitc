@@ -1,0 +1,461 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="PIC.Biz.Flow.BpmFlow"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:ppw="clr-namespace:PIC.Portal.Workflow;assembly=PIC.Portal"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Context" Type="InOutArgument(ppw:FlowContext)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>PIC.Biz.Flow.EmployeeDismissFlow_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>PIC.Portal.Workflow</x:String>
+      <x:String>PIC.Portal.Model</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PIC.Core</AssemblyReference>
+      <AssemblyReference>PIC.Portal</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PIC.Resources</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart DisplayName="考勤管理" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+        <ppw:TaskActivity PortalState="{x:Null}" ActionTitle="" ActorsString="[{UserIds:&quot;${BasicInfo.ApplicantID}&quot;}]" DisplayName="请假人员填写请假单" sap2010:WorkflowViewState.IdRef="TaskActivity_1" IsDefaultReject="False" RouteExpression="" TaskCode="START">
+          <ppw:TaskActivity.Context>
+            <InArgument x:TypeArguments="ppw:FlowContext">
+              <mca:CSharpValue x:TypeArguments="ppw:FlowContext">Context</mca:CSharpValue>
+            </InArgument>
+          </ppw:TaskActivity.Context>
+        </ppw:TaskActivity>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID16" sap2010:WorkflowViewState.IdRef="FlowStep_17">
+            <ppw:TaskActivity PortalState="{x:Null}" ActionTitle="" ActorsString="[{UserIds:&quot;${BasicInfo.ApplicantID}&quot;}]" DisplayName="提交请假单" sap2010:WorkflowViewState.IdRef="TaskActivity_14" IsDefaultReject="False" RouteExpression="" TaskCode="SQR_TJ" Type="Immediate">
+              <ppw:TaskActivity.Context>
+                <InArgument x:TypeArguments="ppw:FlowContext">
+                  <mca:CSharpValue x:TypeArguments="ppw:FlowContext">Context</mca:CSharpValue>
+                </InArgument>
+              </ppw:TaskActivity.Context>
+            </ppw:TaskActivity>
+            <FlowStep.Next>
+              <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID3" DisplayName="员工类型" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_2">
+                <FlowSwitch.Default>
+                  <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_10">
+                    <ppw:TaskActivity PortalState="{x:Null}" ActionTitle="" ActorsString="[{RoleCode: &quot;YZ&quot;, GroupCode: &quot;01&quot;}]" DisplayName="院长审批" sap2010:WorkflowViewState.IdRef="TaskActivity_8" IsDefaultReject="False" RouteExpression="" TaskCode="YZ_SP">
+                      <ppw:TaskActivity.Context>
+                        <InArgument x:TypeArguments="ppw:FlowContext">
+                          <mca:CSharpValue x:TypeArguments="ppw:FlowContext">Context</mca:CSharpValue>
+                        </InArgument>
+                      </ppw:TaskActivity.Context>
+                    </ppw:TaskActivity>
+                    <FlowStep.Next>
+                      <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID11" DisplayName="下一步" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_11">
+                        <FlowSwitch.Expression>
+                          <mca:CSharpValue x:TypeArguments="x:String">Context.NextRouteCode</mca:CSharpValue>
+                        </FlowSwitch.Expression>
+                        <x:Reference>__ReferenceID0<x:Key>Reject</x:Key></x:Reference>
+                        <FlowStep x:Key="Submit" x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_15">
+                          <ppw:TaskActivity PortalState="{x:Null}" ActionTitle="" ActorsString="[{UserIds:&quot;${BasicInfo.ApplicantID}&quot;}]" DisplayName="通知请假人员" sap2010:WorkflowViewState.IdRef="TaskActivity_12" IsDefaultReject="False" RouteExpression="" TaskCode="SQR_JS">
+                            <ppw:TaskActivity.Context>
+                              <InArgument x:TypeArguments="ppw:FlowContext">
+                                <mca:CSharpValue x:TypeArguments="ppw:FlowContext">Context</mca:CSharpValue>
+                              </InArgument>
+                            </ppw:TaskActivity.Context>
+                          </ppw:TaskActivity>
+                          <FlowStep.Next>
+                            <FlowStep x:Name="__ReferenceID15" sap2010:WorkflowViewState.IdRef="FlowStep_16">
+                              <ppw:TaskActivity PortalState="{x:Null}" ActionTitle="" ActorsString="[{RoleCode:&quot;KQY&quot;,GroupId:&quot;${BasicInfo.DeptID}&quot;}]" DisplayName="考勤人员记录" sap2010:WorkflowViewState.IdRef="TaskActivity_13" IsDefaultReject="False" RouteExpression="" TaskCode="KQY_JL" Type="Single">
+                                <ppw:TaskActivity.Context>
+                                  <InArgument x:TypeArguments="ppw:FlowContext">
+                                    <mca:CSharpValue x:TypeArguments="ppw:FlowContext">Context</mca:CSharpValue>
+                                  </InArgument>
+                                </ppw:TaskActivity.Context>
+                              </ppw:TaskActivity>
+                              <FlowStep.Next>
+                                <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_12">
+                                  <ppw:EndActivity ActionTitle="{x:Null}" Context="{x:Null}" PortalState="{x:Null}" RouteExpression="{x:Null}" ActorsString="[]" DisplayName="结束" sap2010:WorkflowViewState.IdRef="EndActivity_3" IsDefaultReject="False" TaskCode="END" Type="Immediate" />
+                                </FlowStep>
+                              </FlowStep.Next>
+                            </FlowStep>
+                          </FlowStep.Next>
+                        </FlowStep>
+                      </FlowSwitch>
+                    </FlowStep.Next>
+                  </FlowStep>
+                </FlowSwitch.Default>
+                <FlowSwitch.Expression>
+                  <mca:CSharpValue x:TypeArguments="x:String">Context.FlowState.FormData.Get&lt;String&gt;("YGLX")</mca:CSharpValue>
+                </FlowSwitch.Expression>
+                <FlowStep x:Key="中层干部" x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_11">
+                  <ppw:TaskActivity PortalState="{x:Null}" ActionTitle="" ActorsString="[{RoleCode:&quot;FYZ&quot;,GroupId:&quot;${BasicInfo.DeptID}&quot;}]" DisplayName="主管副院长审批" sap2010:WorkflowViewState.IdRef="TaskActivity_9" IsDefaultReject="False" RouteExpression="" TaskCode="ZGFYZ_SP">
+                    <ppw:TaskActivity.Context>
+                      <InArgument x:TypeArguments="ppw:FlowContext">
+                        <mca:CSharpValue x:TypeArguments="ppw:FlowContext">Context</mca:CSharpValue>
+                      </InArgument>
+                    </ppw:TaskActivity.Context>
+                  </ppw:TaskActivity>
+                  <FlowStep.Next>
+                    <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID14" DisplayName="下一步" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_14">
+                      <FlowSwitch.Expression>
+                        <mca:CSharpValue x:TypeArguments="x:String">Context.NextRouteCode</mca:CSharpValue>
+                      </FlowSwitch.Expression>
+                      <FlowSwitch x:TypeArguments="x:Boolean" x:Key="Submit" x:Name="__ReferenceID5" DisplayName="天数是否大于3天" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_8">
+                        <FlowSwitch.Expression>
+                          <mca:CSharpValue x:TypeArguments="x:Boolean">Context.FlowState.FormData.Get&lt;int&gt;("TS") &gt; 3</mca:CSharpValue>
+                        </FlowSwitch.Expression>
+                        <x:Reference>__ReferenceID1<x:Key>True</x:Key></x:Reference>
+                        <x:Reference>__ReferenceID2<x:Key>False</x:Key></x:Reference>
+                      </FlowSwitch>
+                      <x:Reference>__ReferenceID0<x:Key>Reject</x:Key></x:Reference>
+                    </FlowSwitch>
+                  </FlowStep.Next>
+                </FlowStep>
+                <FlowStep x:Key="职工" x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_13">
+                  <ppw:TaskActivity PortalState="{x:Null}" ActionTitle="" ActorsString="[{RoleCode:&quot;FZR&quot;,GroupId:&quot;${BasicInfo.DeptID}&quot;}]" DisplayName="部门负责人审批" sap2010:WorkflowViewState.IdRef="TaskActivity_10" IsDefaultReject="False" RouteExpression="" TaskCode="FZR_SP">
+                    <ppw:TaskActivity.Context>
+                      <InArgument x:TypeArguments="ppw:FlowContext">
+                        <mca:CSharpValue x:TypeArguments="ppw:FlowContext">Context</mca:CSharpValue>
+                      </InArgument>
+                    </ppw:TaskActivity.Context>
+                  </ppw:TaskActivity>
+                  <FlowStep.Next>
+                    <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID12" DisplayName="下一步" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_12">
+                      <FlowSwitch.Expression>
+                        <mca:CSharpValue x:TypeArguments="x:String">Context.NextRouteCode</mca:CSharpValue>
+                      </FlowSwitch.Expression>
+                      <FlowSwitch x:TypeArguments="x:Boolean" x:Key="Submit" x:Name="__ReferenceID8" DisplayName="天数是否大于2天" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_9">
+                        <FlowSwitch.Expression>
+                          <mca:CSharpValue x:TypeArguments="x:Boolean">Context.FlowState.FormData.Get&lt;int&gt;("TS") &gt; 2</mca:CSharpValue>
+                        </FlowSwitch.Expression>
+                        <FlowStep x:Key="True" x:Name="__ReferenceID9" sap2010:WorkflowViewState.IdRef="FlowStep_14">
+                          <ppw:TaskActivity PortalState="{x:Null}" ActionTitle="" ActorsString="[{RoleCode:&quot;FYZ&quot;,GroupId:&quot;${BasicInfo.DeptID}&quot;}]" DisplayName="主管副院长审批" sap2010:WorkflowViewState.IdRef="TaskActivity_11" IsDefaultReject="False" RouteExpression="" TaskCode="ZGYZ_SP">
+                            <ppw:TaskActivity.Context>
+                              <InArgument x:TypeArguments="ppw:FlowContext">
+                                <mca:CSharpValue x:TypeArguments="ppw:FlowContext">Context</mca:CSharpValue>
+                              </InArgument>
+                            </ppw:TaskActivity.Context>
+                          </ppw:TaskActivity>
+                          <FlowStep.Next>
+                            <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID13" DisplayName="下一步" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_13">
+                              <FlowSwitch.Expression>
+                                <mca:CSharpValue x:TypeArguments="x:String">Context.NextRouteCode</mca:CSharpValue>
+                              </FlowSwitch.Expression>
+                              <FlowSwitch x:TypeArguments="x:Boolean" x:Key="Submit" x:Name="__ReferenceID10" DisplayName="天数是否大于5天" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_10">
+                                <FlowSwitch.Expression>
+                                  <mca:CSharpValue x:TypeArguments="x:Boolean">Context.FlowState.FormData.Get&lt;int&gt;("TS") &gt; 5</mca:CSharpValue>
+                                </FlowSwitch.Expression>
+                                <x:Reference>__ReferenceID2<x:Key>False</x:Key></x:Reference>
+                                <x:Reference>__ReferenceID1<x:Key>True</x:Key></x:Reference>
+                              </FlowSwitch>
+                              <x:Reference>__ReferenceID0<x:Key>Reject</x:Key></x:Reference>
+                            </FlowSwitch>
+                          </FlowStep.Next>
+                        </FlowStep>
+                        <x:Reference>__ReferenceID2<x:Key>False</x:Key></x:Reference>
+                      </FlowSwitch>
+                      <x:Reference>__ReferenceID0<x:Key>Reject</x:Key></x:Reference>
+                    </FlowSwitch>
+                  </FlowStep.Next>
+                </FlowStep>
+              </FlowSwitch>
+            </FlowStep.Next>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID6</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
+    <x:Reference>__ReferenceID8</x:Reference>
+    <x:Reference>__ReferenceID9</x:Reference>
+    <x:Reference>__ReferenceID10</x:Reference>
+    <x:Reference>__ReferenceID11</x:Reference>
+    <x:Reference>__ReferenceID12</x:Reference>
+    <x:Reference>__ReferenceID13</x:Reference>
+    <x:Reference>__ReferenceID14</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID15</x:Reference>
+    <x:Reference>__ReferenceID16</x:Reference>
+    <sads:DebugSymbol.Symbol>d05EOlxXb3Jrc3BhY2VzXEJpVENcQ29kZVxGcmFtZXdvcmtcUElDLlJlc291cmNlc1xEZXBsb3lcRmxvd3NccnNcUlNHTDA0LjA1LnhhbWwaLwPSAQ8CAQEyCTgcAgEoOw1BIAIBJXETcYUBAgEjRhVMKAIBIFAbUG4CAR5UG1ouAgEbXR9jMgIBGGYjZp0CAgEXjAETkgEmAgEUlgEZlgFsAgESmgEbmgGQAQIBEJ0BG6MBLgIBDacBIacBdAIBC6sBI6sBmAECAQl0E3omAgEGfhl+bAIBBIIBG4IBkAECAQI1DzVbAgEpPhM+XwIBJkkbSWcCASFXIVdtAgEcYCVgcQIBGY8BGY8BZQIBFaABIaABbQIBDncZd2UCAQc=</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="TaskActivity_1" sap:VirtualizedContainerService.HintSize="200,36">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TaskActivity_14" sap:VirtualizedContainerService.HintSize="200,36">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TaskActivity_8" sap:VirtualizedContainerService.HintSize="200,36">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TaskActivity_12" sap:VirtualizedContainerService.HintSize="200,36">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TaskActivity_13" sap:VirtualizedContainerService.HintSize="200,36">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="EndActivity_3" sap:VirtualizedContainerService.HintSize="200,36">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_12">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">260,1112</av:Point>
+            <av:Size x:Key="ShapeSize">200,36</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_16">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">260,1022</av:Point>
+            <av:Size x:Key="ShapeSize">200,36</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">360,1058 360,1112</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_15">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">260,932</av:Point>
+            <av:Size x:Key="ShapeSize">200,36</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">360,968 360,1022</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowSwitch`1_11" sap:VirtualizedContainerService.HintSize="70,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">115,906.5</av:Point>
+            <av:Size x:Key="ShapeSize">70,87</av:Size>
+            <av:PointCollection x:Key="SubmitConnector">185,950 260,950</av:PointCollection>
+            <av:PointCollection x:Key="RejectConnector">115,950 39,950 39,144.5 260,144.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_10">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">50,812</av:Point>
+            <av:Size x:Key="ShapeSize">200,36</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">150,848 150,906.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TaskActivity_9" sap:VirtualizedContainerService.HintSize="200,36">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowSwitch`1_8" sap:VirtualizedContainerService.HintSize="95,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">312.5,696.5</av:Point>
+            <av:Size x:Key="ShapeSize">95,87</av:Size>
+            <av:PointCollection x:Key="TrueConnector">312.5,740 150,740 150,812</av:PointCollection>
+            <av:PointCollection x:Key="FalseConnector">360,783.5 360,932</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowSwitch`1_14" sap:VirtualizedContainerService.HintSize="70,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">325,556.5</av:Point>
+            <av:Size x:Key="ShapeSize">70,87</av:Size>
+            <av:PointCollection x:Key="SubmitConnector">360,643.5 360,696.5</av:PointCollection>
+            <av:PointCollection x:Key="RejectConnector">325,600 230,600 230,144.5 260,144.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_11">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">260,482</av:Point>
+            <av:Size x:Key="ShapeSize">200,36</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">360,518 360,556.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TaskActivity_10" sap:VirtualizedContainerService.HintSize="200,36">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TaskActivity_11" sap:VirtualizedContainerService.HintSize="200,36">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowSwitch`1_10" sap:VirtualizedContainerService.HintSize="95,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">552.5,786.5</av:Point>
+            <av:Size x:Key="ShapeSize">95,87</av:Size>
+            <av:PointCollection x:Key="FalseConnector">600,873.5 600,950 460,950</av:PointCollection>
+            <av:PointCollection x:Key="TrueConnector">552.5,830 250,830</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowSwitch`1_13" sap:VirtualizedContainerService.HintSize="70,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">565,626.5</av:Point>
+            <av:Size x:Key="ShapeSize">70,87</av:Size>
+            <av:PointCollection x:Key="SubmitConnector">600,713.5 600,786.5</av:PointCollection>
+            <av:PointCollection x:Key="RejectConnector">565,670 490,670 490,144.5 460,144.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_14">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">500,512</av:Point>
+            <av:Size x:Key="ShapeSize">200,36</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">600,548 600,626.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowSwitch`1_9" sap:VirtualizedContainerService.HintSize="95,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">762.5,686.5</av:Point>
+            <av:Size x:Key="ShapeSize">95,87</av:Size>
+            <av:PointCollection x:Key="TrueConnector">762.5,730 732.5,730 732.5,482 600,482 600,512</av:PointCollection>
+            <av:PointCollection x:Key="FalseConnector">810,773.5 810,950 460,950</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowSwitch`1_12" sap:VirtualizedContainerService.HintSize="70,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">775,498</av:Point>
+            <av:Size x:Key="ShapeSize">70,87</av:Size>
+            <av:PointCollection x:Key="SubmitConnector">810,585 810,686.5</av:PointCollection>
+            <av:PointCollection x:Key="RejectConnector">845,541.5 930.5,541.5 930.5,144.5 460,144.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_13">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">710,412</av:Point>
+            <av:Size x:Key="ShapeSize">200,36</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">810,448 810,498</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowSwitch`1_2" sap:VirtualizedContainerService.HintSize="70,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">325,326.5</av:Point>
+            <av:Size x:Key="ShapeSize">70,87</av:Size>
+            <x:String x:Key="DefaultCaseDisplayName">院领导</x:String>
+            <av:PointCollection x:Key="Default">325,370 150,370 150,812</av:PointCollection>
+            <av:PointCollection x:Key="中层干部Connector">360,413.5 360,482</av:PointCollection>
+            <av:PointCollection x:Key="职工Connector">395,370 810,370 810,412</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_17">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">260,222</av:Point>
+            <av:Size x:Key="ShapeSize">200,36</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">360,258 360,326.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">260,126.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,36</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">360,162.5 360,222</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="952,1229">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">330,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">360,77.5 360,126.5</av:PointCollection>
+            <x:Double x:Key="Height">1193</x:Double>
+            <x:Double x:Key="Width">938</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="PIC.Biz.Flow.EmployeeDismissFlow_1" sap:VirtualizedContainerService.HintSize="992,1309" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

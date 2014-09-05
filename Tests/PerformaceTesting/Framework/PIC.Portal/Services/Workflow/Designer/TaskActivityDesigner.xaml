@@ -1,0 +1,26 @@
+﻿<sap:ActivityDesigner x:Class="PIC.Portal.Workflow.TaskActivityDesigner"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+    xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation"
+    xmlns:sapc="clr-namespace:System.Activities.Presentation.Converters;assembly=System.Activities.Presentation"
+    xmlns:s="clr-namespace:System;assembly=mscorlib" Collapsible="True">
+        <sap:ActivityDesigner.Resources>
+        <sapc:ArgumentToExpressionConverter x:Key="ArgumentToExpressionConverter"/>
+        <DataTemplate x:Key="Collapsed">
+        </DataTemplate>
+        <DataTemplate x:Key="Expanded">
+        </DataTemplate>
+        <Style x:Key="ExpandOrCollapsedStyle" TargetType="{x:Type ContentPresenter}">
+            <Setter Property="ContentTemplate" Value="{DynamicResource Expanded}"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=ShowExpanded}" Value="true">
+                    <Setter Property="ContentTemplate" Value="{DynamicResource Collapsed}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </sap:ActivityDesigner.Resources>
+    <Grid Visibility="Hidden">
+        <ContentPresenter Style="{DynamicResource ExpandOrCollapsedStyle}" Content="{Binding}" />
+    </Grid>
+</sap:ActivityDesigner>

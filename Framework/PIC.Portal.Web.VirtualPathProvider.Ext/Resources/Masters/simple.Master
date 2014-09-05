@@ -1,0 +1,22 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="simple.master.cs" Inherits="PIC.Portal.Web.Resources.Masters.simple" %>
+
+<html>
+<head id="pageHead" runat="server">
+    <title id="pageTitle" runat="server">PIC</title>
+    
+    <link rel="stylesheet" type="text/css" href="/portal/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/portal/js/ext4/resources/css/ext-all.css" />
+
+    <script type="text/javascript" src="/portal/js/lib/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/portal/js/ext4/ext-all-debug.js"></script>
+    <script type="text/javascript" src="/portal/js/ext4/locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/portal/js/common.js"></script>
+    
+    <asp:ContentPlaceHolder ID="HeadHolder" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body id="pageBody" runat="server" style="margin:0px">
+    <form id="pageForm" runat="server">
+    <asp:ContentPlaceHolder ID="BodyHolder" runat="server"></asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>

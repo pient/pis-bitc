@@ -1,0 +1,9 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Resources/Masters/site.Master" AutoEventWireup="true" CodeBehind="bpm.master.cs" Inherits="PIC.Portal.Web.Resources.Masters.bpm" %>
+<asp:Content ID="HeadContent" ContentPlaceHolderID="HeadHolder" runat="server">
+    <script type="text/javascript" src="/portal/js/app/pgctrl-ext4-bpm.js"></script>
+
+    <asp:ContentPlaceHolder ID="HeadHolder" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="BodyHolder" runat="server">
+    <asp:ContentPlaceHolder ID="BodyHolder" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>

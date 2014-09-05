@@ -1,0 +1,20 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="formpage.master.cs" Inherits="PIC.Portal.Web.Masters.Ext.formpage" %>
+
+<asp:Content ID="HeadContent" ContentPlaceHolderID="HeadHolder" runat="server">
+    
+    <link href="/portal/App_Themes/Ext/form.css" rel="stylesheet" type="text/css" />
+    <link href="/portal/App_Themes/Default/jquery-ui-1.8/redmond.css" rel="stylesheet" type="text/css" />
+    
+    <script src="/portal/js/lib/jquery-ui-1.8.custom.min.js" type="text/javascript"></script>
+    <script src="/portal/js/lib/jquery.validationEngine.js" type="text/javascript"></script>
+    <script src="/portal/js/lib/jquery.validationEngine.js" type="text/javascript"></script>
+    <script src="/portal/js/lib/jquery.ui.datepicker-zh-CN.js" type="text/javascript"></script>
+    <script src="/portal/js/pgfunc-ext-form.js" type="text/javascript"></script>
+    <script src="/portal/js/pgctrl-ext-form.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder ID="HeadHolder" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="BodyHolder" runat="server">
+    
+    <asp:ContentPlaceHolder ID="BodyHolder" runat="server"></asp:ContentPlaceHolder>
+
+</asp:Content>

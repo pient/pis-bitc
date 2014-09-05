@@ -1,0 +1,15 @@
+﻿{
+	"data": {
+		"items": [{
+			"id": "1",
+			"author": "上海百联沪通",
+			"video": {
+				"thumbnail": {
+					"sqDefault" :"/mobile/images/car1.jpg"
+				},
+				"title": "08款凯迪拉克CTS将在下个月上市，这将成为一月份全新凯迪拉克SRX上市之后，上海通用今年推出的第二款凯迪拉克车型。",
+				"url": "http://v.youku.com/v_show/id_XNTE4ODg4MDY0.html"
+			}
+		}]
+	}
+}

@@ -1,0 +1,23 @@
+##FILENAME:${table.GetClassName()}.hbm.xml
+##
+## This is a TEST NHibernate template.  Use at your own risk.
+##
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This is a TEST NHibernate template.  Use at your own risk. -->
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.0">
+	<class name="${table.GetClassName()}" table="$table">
+#foreach ($f in $fields)
+#if (${f.IsPrimaryKey()})
+		<id name="${f.GetPropertyName()}" column="${f.Column_Name}" access="field.camelcase-underscore">
+			<generator class="native"/>
+		</id>
+#else
+#if ($f.IsForeignKey())
+		<many-to-one name="${f.GetPropertyName()}" class="${f.GetNetType()}" cascade="none" constrained="true" fetch="select"  access="field.camelcase-underscore"/>
+#else
+		<property name="${f.GetPropertyName()}" column="${f.Column_Name}" type="${f.GetNetType()}" access="field.camelcase-underscore"/> 
+#end
+#end
+#end
+	</class>
+</hibernate-mapping>

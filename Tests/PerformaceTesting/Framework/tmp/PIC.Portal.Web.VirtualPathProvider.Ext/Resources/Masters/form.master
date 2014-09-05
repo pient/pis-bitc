@@ -1,0 +1,10 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="form.master.cs" Inherits="PIC.Portal.Web.Masters.Ext.form" %>
+
+<asp:Content ID="HeadContent" ContentPlaceHolderID="HeadHolder" runat="server">
+    <asp:ContentPlaceHolder ID="HeadHolder" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="BodyHolder" runat="server">
+    
+    <asp:ContentPlaceHolder ID="BodyHolder" runat="server"></asp:ContentPlaceHolder>
+
+</asp:Content>

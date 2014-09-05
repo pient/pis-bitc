@@ -1,0 +1,44 @@
+##FILENAME:Web_${table.GetClassName()}_Edit.htm
+##
+## Inspired by http://sqlblog.com/blogs/rhundhausen/archive/2007/09/18/code-that-writes-code-or-tsql-that-writes-asp-net.aspx
+##
+## Generate an ASP.Net 2.0 web form
+## More work is needed, as I do not have a functional page, just a sketch-up.
+## It is missing proper support for non-string datatypes.  This template also
+## needs lookup support for related tables, with either a listed description
+## field or a drop-down selection of choices for "small" tables.
+##
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>Edit ${table.GetLabel()}</title></head>
+<body>
+<!--
+ web form generated from ${table}
+ $developer [$date] Created
+ -->
+<table>
+#set ($n = 0)
+#foreach($f in $fields)
+#if (!$f.IsPrimaryKey())
+#if (!$f.IsForeignKey())
+#set ($flen = $f.Character_Maximum_Length)
+#if ($flen < 20)
+#set ($n = 100)
+#else
+#if ($flen < 50)
+#set ($n = 200)
+#else
+#set ($n = 400)
+#end
+#end
+<tr>
+<td class="EditLabel">${f.GetLabel()}</td>
+  <td class="Edit">
+    <asp:TextBox id="txt${f.GetPropertyName()}" runat="Server" width="${n}px" maxlength="${f.Character_Maximum_Length}"></asp:TextBox>
+  </td>
+</tr>
+#end
+#end
+#end
+</table>
+</body>
+</html>

@@ -1,0 +1,27 @@
+##FILENAME:${table.GetClassName()}Rule.cs
+##
+## Castle ActiveRecord entity class
+##
+// Business class ${table.GetClassName()}Rule generated from ${table}
+// Creator: Ray
+// Created Date: [$date]
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using Castle.ActiveRecord;
+using NHibernate;
+using Aim.Data;
+using Aim.Portal.Entity;
+	
+namespace $namespace
+{
+	public $Partial class ${table.GetClassName()}Rule : RuleBase<${table.GetClassName()}>
+	{
+		#region æ≤Ã¨≥…‘±
+		
+		#endregion
+		
+	} // ${table.GetClassName()}Rule
+}

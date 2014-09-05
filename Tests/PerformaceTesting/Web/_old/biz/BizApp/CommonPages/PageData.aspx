@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" CodeBehind="PageData.aspx.cs" Inherits="PIC.Biz.Web.CommonPages.PageData" %>

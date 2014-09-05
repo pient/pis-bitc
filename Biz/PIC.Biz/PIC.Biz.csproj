@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{98EC024C-6439-44B1-8B1E-29E457B2201F}</ProjectGuid>
+    <ProjectTypeGuids>{32f31d43-81cc-4c15-9de6-3fc5453562b6};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PIC.Biz</RootNamespace>
+    <AssemblyName>PIC.Biz</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.ActiveRecord, Version=3.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\libs2\Castle.ActiveRecord.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\Bin\libs2\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\libs2\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\libs2\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus">
+      <HintPath>..\..\Bin\libs2\NServiceBus.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\libs2\PostSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activities" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BizDataHelper.cs" />
+    <Compile Include="BizModelBase.cs" />
+    <Compile Include="BizTreeNodeModelBase.cs" />
+    <Compile Include="Model\HR\HR_Employee.cs" />
+    <Compile Include="Model\HR\HR_Employee.g.cs" />
+    <Compile Include="Model\HR\HR_EmployeeCareer.cs" />
+    <Compile Include="Model\HR\HR_EmployeeCareer.g.cs" />
+    <Compile Include="Model\HR\HR_EmployeeContract.cs" />
+    <Compile Include="Model\HR\HR_EmployeeContract.g.cs" />
+    <Compile Include="Model\HR\HR_EmployeeContractNoticeAction.cs" />
+    <Compile Include="Model\HR\HR_EmployeeJobTitle.cs" />
+    <Compile Include="Model\HR\HR_EmployeeJobTitle.g.cs" />
+    <Compile Include="Model\HR\HR_EmployeeQualification.cs" />
+    <Compile Include="Model\HR\HR_EmployeeQualification.g.cs" />
+    <Compile Include="Model\HR\HR_EmployeeQualificationInfo.cs" />
+    <Compile Include="Model\HR\HR_EmployeeQualificationInfo.g.cs" />
+    <Compile Include="Model\HR\HR_EmployeeTitle.cs" />
+    <Compile Include="Model\HR\HR_EmployeeTitle.g.cs" />
+    <Compile Include="Model\OA\OA_Property.cs" />
+    <Compile Include="Model\OA\OA_Property.g.cs" />
+    <Compile Include="Model\OA\OA_PublicInfo.cs" />
+    <Compile Include="Model\OA\OA_PublicInfo.g.cs" />
+    <Compile Include="Model\OA\OA_Reimbursement.g.cs" />
+    <Compile Include="Model\OA\OA_YellowPage.cs" />
+    <Compile Include="Model\OA\OA_YellowPage.g.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Task\HR\ContractNoticeAction.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\PIC.Core\PIC.Core.csproj">
+      <Project>{4cb4b35d-4816-44ab-809f-f3cd382f4173}</Project>
+      <Name>PIC.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\PIC.Portal\PIC.Portal.csproj">
+      <Project>{D4CE9223-3911-4FDD-9C9C-1CEDB6B5ABB4}</Project>
+      <Name>PIC.Portal</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\OA\OA_Reimbursement.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <XamlAppDef Include="Flow\HR\EmployeeDismissFlow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </XamlAppDef>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
